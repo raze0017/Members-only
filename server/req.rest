@@ -1,0 +1,7 @@
+POST http://localhost:3000/sign-up
+Content-Type: application/json
+
+{
+  "username": "raze",
+  "password": "razeRocks"
+}
