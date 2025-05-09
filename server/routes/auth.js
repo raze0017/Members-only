@@ -17,18 +17,24 @@ router.post("/sign-up", async (req, res, next) => {
   }
 });
 
-router.post(
-  "/log-in",
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/",
-  })
-);
+router.post("/log-in", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) return next(err);
+    if (!user) return res.status(401).json({ message: "Invalid credentials" });
+
+    req.login(user, (err) => {
+      if (err) return next(err);
+      return res.status(200).json({ message: "Login successful", user });
+    });
+  })(req, res, next); // <-- Don't forget to immediately call the middleware with req, res, next
+});
 
 router.get("/log-out", (req, res, next) => {
-  req.logout((err) => {
-    if (err) return next(err);
-    res.redirect("/");
+  req.logout(function (err) {
+    if (err) {
+      return next(err); // ✅ now "next" is in scope
+    }
+    res.json({ message: "Logged out successfully" }); // or res.redirect("/")
   });
 });
 

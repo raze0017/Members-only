@@ -10,6 +10,7 @@ const cors = require("cors");
 app.use(
   cors({
     origin: "http://localhost:5173", // frontend origin
+    credentials: true, // very important
   })
 );
 app.use(express.urlencoded({ extended: false }));

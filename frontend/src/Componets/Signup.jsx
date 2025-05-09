@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import Login from "./Login";
 function Signup() {
   const [form, setForm] = useState({ username: "", password: "" });
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -13,6 +14,7 @@ function Signup() {
       });
       const data = await response.json();
       console.log("Signup successful:", data);
+      navigate("/Login");
       // maybe reset form or redirect
     } catch (err) {
       console.error("Signup failed:", err);
