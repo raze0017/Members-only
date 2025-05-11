@@ -31,27 +31,32 @@ function Login() {
     }
   };
   return (
-    <div className="flex items-center justify-center flex-col">
+    <div className="flex items-center justify-center flex-col mt-[250px]">
+      <div className="header text-2xl justify-center items-center">
+        Login to Blog Away!
+      </div>
       <form
         className="flex items-center justify-center flex-col"
         onSubmit={handleSubmit}
       >
-        <label>
+        <label className="label username flex flex-col">
           Enter Username:
           <input
             type="text"
             name="username"
             value={formData.username}
+            className="input"
             onChange={(e) =>
               setFormData({ ...formData, username: e.target.value })
             }
           />
         </label>
-        <label>
+        <label className="label password flex flex-col">
           Enter Password:
           <input
             type="password"
             name="password"
+            className="input"
             value={formData.password}
             onChange={(e) =>
               setFormData({
@@ -64,7 +69,7 @@ function Login() {
         <input type="submit" />
       </form>
       <div className="signup">
-        <button className="btn-primary" onClick={navigateTosignup}>
+        <button className="btn-accent" onClick={navigateTosignup}>
           No account? Signup
         </button>
       </div>

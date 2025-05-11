@@ -13,6 +13,10 @@ router.post("/sign-up", async (req, res, next) => {
     ]);
     res.status(201).json({ message: "User created successfully" });
   } catch (err) {
+    if (err.code === "23505") {
+      // Unique constraint violation
+      return res.status(400).json({ message: "Username already taken" });
+    }
     return next(err);
   }
 });
