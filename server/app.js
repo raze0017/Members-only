@@ -25,7 +25,7 @@ const postsRouter = require("./routes/posts");
 const authRouter = require("./routes/auth");
 
 app.use("/", authRouter);
-app.use("/posts", postsRouter);
+app.use("/clubs", postsRouter);
 
 app.listen(3000, () => {
   console.log("server listening on 3000");

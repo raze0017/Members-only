@@ -125,13 +125,24 @@ exports.Prisma.PostsScalarFieldEnum = {
   title: 'title',
   content: 'content',
   created_at: 'created_at',
-  author_id: 'author_id'
+  author_id: 'author_id',
+  club_id: 'club_id'
 };
 
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
   username: 'username',
   password: 'password'
+};
+
+exports.Prisma.ClubsScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.Users_clubsScalarFieldEnum = {
+  user_id: 'user_id',
+  club_id: 'club_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -152,7 +163,9 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   posts: 'posts',
-  users: 'users'
+  users: 'users',
+  clubs: 'clubs',
+  users_clubs: 'users_clubs'
 };
 
 /**

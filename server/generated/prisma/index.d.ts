@@ -23,6 +23,16 @@ export type posts = $Result.DefaultSelection<Prisma.$postsPayload>
  * 
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
+/**
+ * Model clubs
+ * 
+ */
+export type clubs = $Result.DefaultSelection<Prisma.$clubsPayload>
+/**
+ * Model users_clubs
+ * 
+ */
+export type users_clubs = $Result.DefaultSelection<Prisma.$users_clubsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -168,6 +178,26 @@ export class PrismaClient<
     * ```
     */
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.clubs`: Exposes CRUD operations for the **clubs** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Clubs
+    * const clubs = await prisma.clubs.findMany()
+    * ```
+    */
+  get clubs(): Prisma.clubsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.users_clubs`: Exposes CRUD operations for the **users_clubs** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Users_clubs
+    * const users_clubs = await prisma.users_clubs.findMany()
+    * ```
+    */
+  get users_clubs(): Prisma.users_clubsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -609,7 +639,9 @@ export namespace Prisma {
 
   export const ModelName: {
     posts: 'posts',
-    users: 'users'
+    users: 'users',
+    clubs: 'clubs',
+    users_clubs: 'users_clubs'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -628,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "posts" | "users"
+      modelProps: "posts" | "users" | "clubs" | "users_clubs"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -780,6 +812,154 @@ export namespace Prisma {
           }
         }
       }
+      clubs: {
+        payload: Prisma.$clubsPayload<ExtArgs>
+        fields: Prisma.clubsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.clubsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clubsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.clubsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clubsPayload>
+          }
+          findFirst: {
+            args: Prisma.clubsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clubsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.clubsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clubsPayload>
+          }
+          findMany: {
+            args: Prisma.clubsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clubsPayload>[]
+          }
+          create: {
+            args: Prisma.clubsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clubsPayload>
+          }
+          createMany: {
+            args: Prisma.clubsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.clubsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clubsPayload>[]
+          }
+          delete: {
+            args: Prisma.clubsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clubsPayload>
+          }
+          update: {
+            args: Prisma.clubsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clubsPayload>
+          }
+          deleteMany: {
+            args: Prisma.clubsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.clubsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.clubsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clubsPayload>[]
+          }
+          upsert: {
+            args: Prisma.clubsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clubsPayload>
+          }
+          aggregate: {
+            args: Prisma.ClubsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateClubs>
+          }
+          groupBy: {
+            args: Prisma.clubsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ClubsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.clubsCountArgs<ExtArgs>
+            result: $Utils.Optional<ClubsCountAggregateOutputType> | number
+          }
+        }
+      }
+      users_clubs: {
+        payload: Prisma.$users_clubsPayload<ExtArgs>
+        fields: Prisma.users_clubsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.users_clubsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$users_clubsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.users_clubsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$users_clubsPayload>
+          }
+          findFirst: {
+            args: Prisma.users_clubsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$users_clubsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.users_clubsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$users_clubsPayload>
+          }
+          findMany: {
+            args: Prisma.users_clubsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$users_clubsPayload>[]
+          }
+          create: {
+            args: Prisma.users_clubsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$users_clubsPayload>
+          }
+          createMany: {
+            args: Prisma.users_clubsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.users_clubsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$users_clubsPayload>[]
+          }
+          delete: {
+            args: Prisma.users_clubsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$users_clubsPayload>
+          }
+          update: {
+            args: Prisma.users_clubsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$users_clubsPayload>
+          }
+          deleteMany: {
+            args: Prisma.users_clubsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.users_clubsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.users_clubsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$users_clubsPayload>[]
+          }
+          upsert: {
+            args: Prisma.users_clubsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$users_clubsPayload>
+          }
+          aggregate: {
+            args: Prisma.Users_clubsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUsers_clubs>
+          }
+          groupBy: {
+            args: Prisma.users_clubsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Users_clubsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.users_clubsCountArgs<ExtArgs>
+            result: $Utils.Optional<Users_clubsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -866,6 +1046,8 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     posts?: postsOmit
     users?: usersOmit
+    clubs?: clubsOmit
+    users_clubs?: users_clubsOmit
   }
 
   /* Types for Logging */
@@ -961,10 +1143,12 @@ export namespace Prisma {
 
   export type UsersCountOutputType = {
     posts: number
+    users_clubs: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posts?: boolean | UsersCountOutputTypeCountPostsArgs
+    users_clubs?: boolean | UsersCountOutputTypeCountUsers_clubsArgs
   }
 
   // Custom InputTypes
@@ -983,6 +1167,53 @@ export namespace Prisma {
    */
   export type UsersCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: postsWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountUsers_clubsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: users_clubsWhereInput
+  }
+
+
+  /**
+   * Count Type ClubsCountOutputType
+   */
+
+  export type ClubsCountOutputType = {
+    posts: number
+    users_clubs: number
+  }
+
+  export type ClubsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posts?: boolean | ClubsCountOutputTypeCountPostsArgs
+    users_clubs?: boolean | ClubsCountOutputTypeCountUsers_clubsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ClubsCountOutputType without action
+   */
+  export type ClubsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClubsCountOutputType
+     */
+    select?: ClubsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ClubsCountOutputType without action
+   */
+  export type ClubsCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: postsWhereInput
+  }
+
+  /**
+   * ClubsCountOutputType without action
+   */
+  export type ClubsCountOutputTypeCountUsers_clubsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: users_clubsWhereInput
   }
 
 
@@ -1005,11 +1236,13 @@ export namespace Prisma {
   export type PostsAvgAggregateOutputType = {
     id: number | null
     author_id: number | null
+    club_id: number | null
   }
 
   export type PostsSumAggregateOutputType = {
     id: number | null
     author_id: number | null
+    club_id: number | null
   }
 
   export type PostsMinAggregateOutputType = {
@@ -1018,6 +1251,7 @@ export namespace Prisma {
     content: string | null
     created_at: Date | null
     author_id: number | null
+    club_id: number | null
   }
 
   export type PostsMaxAggregateOutputType = {
@@ -1026,6 +1260,7 @@ export namespace Prisma {
     content: string | null
     created_at: Date | null
     author_id: number | null
+    club_id: number | null
   }
 
   export type PostsCountAggregateOutputType = {
@@ -1034,6 +1269,7 @@ export namespace Prisma {
     content: number
     created_at: number
     author_id: number
+    club_id: number
     _all: number
   }
 
@@ -1041,11 +1277,13 @@ export namespace Prisma {
   export type PostsAvgAggregateInputType = {
     id?: true
     author_id?: true
+    club_id?: true
   }
 
   export type PostsSumAggregateInputType = {
     id?: true
     author_id?: true
+    club_id?: true
   }
 
   export type PostsMinAggregateInputType = {
@@ -1054,6 +1292,7 @@ export namespace Prisma {
     content?: true
     created_at?: true
     author_id?: true
+    club_id?: true
   }
 
   export type PostsMaxAggregateInputType = {
@@ -1062,6 +1301,7 @@ export namespace Prisma {
     content?: true
     created_at?: true
     author_id?: true
+    club_id?: true
   }
 
   export type PostsCountAggregateInputType = {
@@ -1070,6 +1310,7 @@ export namespace Prisma {
     content?: true
     created_at?: true
     author_id?: true
+    club_id?: true
     _all?: true
   }
 
@@ -1165,6 +1406,7 @@ export namespace Prisma {
     content: string
     created_at: Date | null
     author_id: number
+    club_id: number | null
     _count: PostsCountAggregateOutputType | null
     _avg: PostsAvgAggregateOutputType | null
     _sum: PostsSumAggregateOutputType | null
@@ -1192,7 +1434,9 @@ export namespace Prisma {
     content?: boolean
     created_at?: boolean
     author_id?: boolean
+    club_id?: boolean
     users?: boolean | usersDefaultArgs<ExtArgs>
+    clubs?: boolean | posts$clubsArgs<ExtArgs>
   }, ExtArgs["result"]["posts"]>
 
   export type postsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1201,7 +1445,9 @@ export namespace Prisma {
     content?: boolean
     created_at?: boolean
     author_id?: boolean
+    club_id?: boolean
     users?: boolean | usersDefaultArgs<ExtArgs>
+    clubs?: boolean | posts$clubsArgs<ExtArgs>
   }, ExtArgs["result"]["posts"]>
 
   export type postsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1210,7 +1456,9 @@ export namespace Prisma {
     content?: boolean
     created_at?: boolean
     author_id?: boolean
+    club_id?: boolean
     users?: boolean | usersDefaultArgs<ExtArgs>
+    clubs?: boolean | posts$clubsArgs<ExtArgs>
   }, ExtArgs["result"]["posts"]>
 
   export type postsSelectScalar = {
@@ -1219,23 +1467,28 @@ export namespace Prisma {
     content?: boolean
     created_at?: boolean
     author_id?: boolean
+    club_id?: boolean
   }
 
-  export type postsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "created_at" | "author_id", ExtArgs["result"]["posts"]>
+  export type postsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "created_at" | "author_id" | "club_id", ExtArgs["result"]["posts"]>
   export type postsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | usersDefaultArgs<ExtArgs>
+    clubs?: boolean | posts$clubsArgs<ExtArgs>
   }
   export type postsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | usersDefaultArgs<ExtArgs>
+    clubs?: boolean | posts$clubsArgs<ExtArgs>
   }
   export type postsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | usersDefaultArgs<ExtArgs>
+    clubs?: boolean | posts$clubsArgs<ExtArgs>
   }
 
   export type $postsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "posts"
     objects: {
       users: Prisma.$usersPayload<ExtArgs>
+      clubs: Prisma.$clubsPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1243,6 +1496,7 @@ export namespace Prisma {
       content: string
       created_at: Date | null
       author_id: number
+      club_id: number | null
     }, ExtArgs["result"]["posts"]>
     composites: {}
   }
@@ -1638,6 +1892,7 @@ export namespace Prisma {
   export interface Prisma__postsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    clubs<T extends posts$clubsArgs<ExtArgs> = {}>(args?: Subset<T, posts$clubsArgs<ExtArgs>>): Prisma__clubsClient<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1672,6 +1927,7 @@ export namespace Prisma {
     readonly content: FieldRef<"posts", 'String'>
     readonly created_at: FieldRef<"posts", 'DateTime'>
     readonly author_id: FieldRef<"posts", 'Int'>
+    readonly club_id: FieldRef<"posts", 'Int'>
   }
     
 
@@ -2068,6 +2324,25 @@ export namespace Prisma {
   }
 
   /**
+   * posts.clubs
+   */
+  export type posts$clubsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: clubsInclude<ExtArgs> | null
+    where?: clubsWhereInput
+  }
+
+  /**
    * posts without action
    */
   export type postsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2269,6 +2544,7 @@ export namespace Prisma {
     username?: boolean
     password?: boolean
     posts?: boolean | users$postsArgs<ExtArgs>
+    users_clubs?: boolean | users$users_clubsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
@@ -2293,6 +2569,7 @@ export namespace Prisma {
   export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password", ExtArgs["result"]["users"]>
   export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posts?: boolean | users$postsArgs<ExtArgs>
+    users_clubs?: boolean | users$users_clubsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type usersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2302,6 +2579,7 @@ export namespace Prisma {
     name: "users"
     objects: {
       posts: Prisma.$postsPayload<ExtArgs>[]
+      users_clubs: Prisma.$users_clubsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2702,6 +2980,7 @@ export namespace Prisma {
   export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     posts<T extends users$postsArgs<ExtArgs> = {}>(args?: Subset<T, users$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$postsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    users_clubs<T extends users$users_clubsArgs<ExtArgs> = {}>(args?: Subset<T, users$users_clubsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3146,6 +3425,30 @@ export namespace Prisma {
   }
 
   /**
+   * users.users_clubs
+   */
+  export type users$users_clubsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
+    where?: users_clubsWhereInput
+    orderBy?: users_clubsOrderByWithRelationInput | users_clubsOrderByWithRelationInput[]
+    cursor?: users_clubsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Users_clubsScalarFieldEnum | Users_clubsScalarFieldEnum[]
+  }
+
+  /**
    * users without action
    */
   export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3161,6 +3464,2164 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: usersInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model clubs
+   */
+
+  export type AggregateClubs = {
+    _count: ClubsCountAggregateOutputType | null
+    _avg: ClubsAvgAggregateOutputType | null
+    _sum: ClubsSumAggregateOutputType | null
+    _min: ClubsMinAggregateOutputType | null
+    _max: ClubsMaxAggregateOutputType | null
+  }
+
+  export type ClubsAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ClubsSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ClubsMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type ClubsMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type ClubsCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type ClubsAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ClubsSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ClubsMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ClubsMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ClubsCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type ClubsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which clubs to aggregate.
+     */
+    where?: clubsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clubs to fetch.
+     */
+    orderBy?: clubsOrderByWithRelationInput | clubsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: clubsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clubs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clubs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned clubs
+    **/
+    _count?: true | ClubsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ClubsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ClubsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ClubsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ClubsMaxAggregateInputType
+  }
+
+  export type GetClubsAggregateType<T extends ClubsAggregateArgs> = {
+        [P in keyof T & keyof AggregateClubs]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateClubs[P]>
+      : GetScalarType<T[P], AggregateClubs[P]>
+  }
+
+
+
+
+  export type clubsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: clubsWhereInput
+    orderBy?: clubsOrderByWithAggregationInput | clubsOrderByWithAggregationInput[]
+    by: ClubsScalarFieldEnum[] | ClubsScalarFieldEnum
+    having?: clubsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ClubsCountAggregateInputType | true
+    _avg?: ClubsAvgAggregateInputType
+    _sum?: ClubsSumAggregateInputType
+    _min?: ClubsMinAggregateInputType
+    _max?: ClubsMaxAggregateInputType
+  }
+
+  export type ClubsGroupByOutputType = {
+    id: number
+    name: string
+    _count: ClubsCountAggregateOutputType | null
+    _avg: ClubsAvgAggregateOutputType | null
+    _sum: ClubsSumAggregateOutputType | null
+    _min: ClubsMinAggregateOutputType | null
+    _max: ClubsMaxAggregateOutputType | null
+  }
+
+  type GetClubsGroupByPayload<T extends clubsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ClubsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ClubsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ClubsGroupByOutputType[P]>
+            : GetScalarType<T[P], ClubsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type clubsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    posts?: boolean | clubs$postsArgs<ExtArgs>
+    users_clubs?: boolean | clubs$users_clubsArgs<ExtArgs>
+    _count?: boolean | ClubsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["clubs"]>
+
+  export type clubsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["clubs"]>
+
+  export type clubsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["clubs"]>
+
+  export type clubsSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type clubsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["clubs"]>
+  export type clubsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posts?: boolean | clubs$postsArgs<ExtArgs>
+    users_clubs?: boolean | clubs$users_clubsArgs<ExtArgs>
+    _count?: boolean | ClubsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type clubsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type clubsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $clubsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "clubs"
+    objects: {
+      posts: Prisma.$postsPayload<ExtArgs>[]
+      users_clubs: Prisma.$users_clubsPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+    }, ExtArgs["result"]["clubs"]>
+    composites: {}
+  }
+
+  type clubsGetPayload<S extends boolean | null | undefined | clubsDefaultArgs> = $Result.GetResult<Prisma.$clubsPayload, S>
+
+  type clubsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<clubsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ClubsCountAggregateInputType | true
+    }
+
+  export interface clubsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['clubs'], meta: { name: 'clubs' } }
+    /**
+     * Find zero or one Clubs that matches the filter.
+     * @param {clubsFindUniqueArgs} args - Arguments to find a Clubs
+     * @example
+     * // Get one Clubs
+     * const clubs = await prisma.clubs.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends clubsFindUniqueArgs>(args: SelectSubset<T, clubsFindUniqueArgs<ExtArgs>>): Prisma__clubsClient<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Clubs that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {clubsFindUniqueOrThrowArgs} args - Arguments to find a Clubs
+     * @example
+     * // Get one Clubs
+     * const clubs = await prisma.clubs.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends clubsFindUniqueOrThrowArgs>(args: SelectSubset<T, clubsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__clubsClient<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Clubs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clubsFindFirstArgs} args - Arguments to find a Clubs
+     * @example
+     * // Get one Clubs
+     * const clubs = await prisma.clubs.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends clubsFindFirstArgs>(args?: SelectSubset<T, clubsFindFirstArgs<ExtArgs>>): Prisma__clubsClient<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Clubs that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clubsFindFirstOrThrowArgs} args - Arguments to find a Clubs
+     * @example
+     * // Get one Clubs
+     * const clubs = await prisma.clubs.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends clubsFindFirstOrThrowArgs>(args?: SelectSubset<T, clubsFindFirstOrThrowArgs<ExtArgs>>): Prisma__clubsClient<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Clubs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clubsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Clubs
+     * const clubs = await prisma.clubs.findMany()
+     * 
+     * // Get first 10 Clubs
+     * const clubs = await prisma.clubs.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const clubsWithIdOnly = await prisma.clubs.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends clubsFindManyArgs>(args?: SelectSubset<T, clubsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Clubs.
+     * @param {clubsCreateArgs} args - Arguments to create a Clubs.
+     * @example
+     * // Create one Clubs
+     * const Clubs = await prisma.clubs.create({
+     *   data: {
+     *     // ... data to create a Clubs
+     *   }
+     * })
+     * 
+     */
+    create<T extends clubsCreateArgs>(args: SelectSubset<T, clubsCreateArgs<ExtArgs>>): Prisma__clubsClient<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Clubs.
+     * @param {clubsCreateManyArgs} args - Arguments to create many Clubs.
+     * @example
+     * // Create many Clubs
+     * const clubs = await prisma.clubs.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends clubsCreateManyArgs>(args?: SelectSubset<T, clubsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Clubs and returns the data saved in the database.
+     * @param {clubsCreateManyAndReturnArgs} args - Arguments to create many Clubs.
+     * @example
+     * // Create many Clubs
+     * const clubs = await prisma.clubs.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Clubs and only return the `id`
+     * const clubsWithIdOnly = await prisma.clubs.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends clubsCreateManyAndReturnArgs>(args?: SelectSubset<T, clubsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Clubs.
+     * @param {clubsDeleteArgs} args - Arguments to delete one Clubs.
+     * @example
+     * // Delete one Clubs
+     * const Clubs = await prisma.clubs.delete({
+     *   where: {
+     *     // ... filter to delete one Clubs
+     *   }
+     * })
+     * 
+     */
+    delete<T extends clubsDeleteArgs>(args: SelectSubset<T, clubsDeleteArgs<ExtArgs>>): Prisma__clubsClient<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Clubs.
+     * @param {clubsUpdateArgs} args - Arguments to update one Clubs.
+     * @example
+     * // Update one Clubs
+     * const clubs = await prisma.clubs.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends clubsUpdateArgs>(args: SelectSubset<T, clubsUpdateArgs<ExtArgs>>): Prisma__clubsClient<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Clubs.
+     * @param {clubsDeleteManyArgs} args - Arguments to filter Clubs to delete.
+     * @example
+     * // Delete a few Clubs
+     * const { count } = await prisma.clubs.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends clubsDeleteManyArgs>(args?: SelectSubset<T, clubsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clubs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clubsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Clubs
+     * const clubs = await prisma.clubs.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends clubsUpdateManyArgs>(args: SelectSubset<T, clubsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clubs and returns the data updated in the database.
+     * @param {clubsUpdateManyAndReturnArgs} args - Arguments to update many Clubs.
+     * @example
+     * // Update many Clubs
+     * const clubs = await prisma.clubs.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Clubs and only return the `id`
+     * const clubsWithIdOnly = await prisma.clubs.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends clubsUpdateManyAndReturnArgs>(args: SelectSubset<T, clubsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Clubs.
+     * @param {clubsUpsertArgs} args - Arguments to update or create a Clubs.
+     * @example
+     * // Update or create a Clubs
+     * const clubs = await prisma.clubs.upsert({
+     *   create: {
+     *     // ... data to create a Clubs
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Clubs we want to update
+     *   }
+     * })
+     */
+    upsert<T extends clubsUpsertArgs>(args: SelectSubset<T, clubsUpsertArgs<ExtArgs>>): Prisma__clubsClient<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Clubs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clubsCountArgs} args - Arguments to filter Clubs to count.
+     * @example
+     * // Count the number of Clubs
+     * const count = await prisma.clubs.count({
+     *   where: {
+     *     // ... the filter for the Clubs we want to count
+     *   }
+     * })
+    **/
+    count<T extends clubsCountArgs>(
+      args?: Subset<T, clubsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ClubsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Clubs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ClubsAggregateArgs>(args: Subset<T, ClubsAggregateArgs>): Prisma.PrismaPromise<GetClubsAggregateType<T>>
+
+    /**
+     * Group by Clubs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clubsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends clubsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: clubsGroupByArgs['orderBy'] }
+        : { orderBy?: clubsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, clubsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClubsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the clubs model
+   */
+  readonly fields: clubsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for clubs.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__clubsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    posts<T extends clubs$postsArgs<ExtArgs> = {}>(args?: Subset<T, clubs$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$postsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    users_clubs<T extends clubs$users_clubsArgs<ExtArgs> = {}>(args?: Subset<T, clubs$users_clubsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the clubs model
+   */
+  interface clubsFieldRefs {
+    readonly id: FieldRef<"clubs", 'Int'>
+    readonly name: FieldRef<"clubs", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * clubs findUnique
+   */
+  export type clubsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: clubsInclude<ExtArgs> | null
+    /**
+     * Filter, which clubs to fetch.
+     */
+    where: clubsWhereUniqueInput
+  }
+
+  /**
+   * clubs findUniqueOrThrow
+   */
+  export type clubsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: clubsInclude<ExtArgs> | null
+    /**
+     * Filter, which clubs to fetch.
+     */
+    where: clubsWhereUniqueInput
+  }
+
+  /**
+   * clubs findFirst
+   */
+  export type clubsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: clubsInclude<ExtArgs> | null
+    /**
+     * Filter, which clubs to fetch.
+     */
+    where?: clubsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clubs to fetch.
+     */
+    orderBy?: clubsOrderByWithRelationInput | clubsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for clubs.
+     */
+    cursor?: clubsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clubs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clubs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of clubs.
+     */
+    distinct?: ClubsScalarFieldEnum | ClubsScalarFieldEnum[]
+  }
+
+  /**
+   * clubs findFirstOrThrow
+   */
+  export type clubsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: clubsInclude<ExtArgs> | null
+    /**
+     * Filter, which clubs to fetch.
+     */
+    where?: clubsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clubs to fetch.
+     */
+    orderBy?: clubsOrderByWithRelationInput | clubsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for clubs.
+     */
+    cursor?: clubsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clubs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clubs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of clubs.
+     */
+    distinct?: ClubsScalarFieldEnum | ClubsScalarFieldEnum[]
+  }
+
+  /**
+   * clubs findMany
+   */
+  export type clubsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: clubsInclude<ExtArgs> | null
+    /**
+     * Filter, which clubs to fetch.
+     */
+    where?: clubsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clubs to fetch.
+     */
+    orderBy?: clubsOrderByWithRelationInput | clubsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing clubs.
+     */
+    cursor?: clubsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clubs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clubs.
+     */
+    skip?: number
+    distinct?: ClubsScalarFieldEnum | ClubsScalarFieldEnum[]
+  }
+
+  /**
+   * clubs create
+   */
+  export type clubsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: clubsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a clubs.
+     */
+    data: XOR<clubsCreateInput, clubsUncheckedCreateInput>
+  }
+
+  /**
+   * clubs createMany
+   */
+  export type clubsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many clubs.
+     */
+    data: clubsCreateManyInput | clubsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * clubs createManyAndReturn
+   */
+  export type clubsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * The data used to create many clubs.
+     */
+    data: clubsCreateManyInput | clubsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * clubs update
+   */
+  export type clubsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: clubsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a clubs.
+     */
+    data: XOR<clubsUpdateInput, clubsUncheckedUpdateInput>
+    /**
+     * Choose, which clubs to update.
+     */
+    where: clubsWhereUniqueInput
+  }
+
+  /**
+   * clubs updateMany
+   */
+  export type clubsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update clubs.
+     */
+    data: XOR<clubsUpdateManyMutationInput, clubsUncheckedUpdateManyInput>
+    /**
+     * Filter which clubs to update
+     */
+    where?: clubsWhereInput
+    /**
+     * Limit how many clubs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * clubs updateManyAndReturn
+   */
+  export type clubsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * The data used to update clubs.
+     */
+    data: XOR<clubsUpdateManyMutationInput, clubsUncheckedUpdateManyInput>
+    /**
+     * Filter which clubs to update
+     */
+    where?: clubsWhereInput
+    /**
+     * Limit how many clubs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * clubs upsert
+   */
+  export type clubsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: clubsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the clubs to update in case it exists.
+     */
+    where: clubsWhereUniqueInput
+    /**
+     * In case the clubs found by the `where` argument doesn't exist, create a new clubs with this data.
+     */
+    create: XOR<clubsCreateInput, clubsUncheckedCreateInput>
+    /**
+     * In case the clubs was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<clubsUpdateInput, clubsUncheckedUpdateInput>
+  }
+
+  /**
+   * clubs delete
+   */
+  export type clubsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: clubsInclude<ExtArgs> | null
+    /**
+     * Filter which clubs to delete.
+     */
+    where: clubsWhereUniqueInput
+  }
+
+  /**
+   * clubs deleteMany
+   */
+  export type clubsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which clubs to delete
+     */
+    where?: clubsWhereInput
+    /**
+     * Limit how many clubs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * clubs.posts
+   */
+  export type clubs$postsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the posts
+     */
+    select?: postsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the posts
+     */
+    omit?: postsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: postsInclude<ExtArgs> | null
+    where?: postsWhereInput
+    orderBy?: postsOrderByWithRelationInput | postsOrderByWithRelationInput[]
+    cursor?: postsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PostsScalarFieldEnum | PostsScalarFieldEnum[]
+  }
+
+  /**
+   * clubs.users_clubs
+   */
+  export type clubs$users_clubsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
+    where?: users_clubsWhereInput
+    orderBy?: users_clubsOrderByWithRelationInput | users_clubsOrderByWithRelationInput[]
+    cursor?: users_clubsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Users_clubsScalarFieldEnum | Users_clubsScalarFieldEnum[]
+  }
+
+  /**
+   * clubs without action
+   */
+  export type clubsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clubs
+     */
+    select?: clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clubs
+     */
+    omit?: clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: clubsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model users_clubs
+   */
+
+  export type AggregateUsers_clubs = {
+    _count: Users_clubsCountAggregateOutputType | null
+    _avg: Users_clubsAvgAggregateOutputType | null
+    _sum: Users_clubsSumAggregateOutputType | null
+    _min: Users_clubsMinAggregateOutputType | null
+    _max: Users_clubsMaxAggregateOutputType | null
+  }
+
+  export type Users_clubsAvgAggregateOutputType = {
+    user_id: number | null
+    club_id: number | null
+  }
+
+  export type Users_clubsSumAggregateOutputType = {
+    user_id: number | null
+    club_id: number | null
+  }
+
+  export type Users_clubsMinAggregateOutputType = {
+    user_id: number | null
+    club_id: number | null
+  }
+
+  export type Users_clubsMaxAggregateOutputType = {
+    user_id: number | null
+    club_id: number | null
+  }
+
+  export type Users_clubsCountAggregateOutputType = {
+    user_id: number
+    club_id: number
+    _all: number
+  }
+
+
+  export type Users_clubsAvgAggregateInputType = {
+    user_id?: true
+    club_id?: true
+  }
+
+  export type Users_clubsSumAggregateInputType = {
+    user_id?: true
+    club_id?: true
+  }
+
+  export type Users_clubsMinAggregateInputType = {
+    user_id?: true
+    club_id?: true
+  }
+
+  export type Users_clubsMaxAggregateInputType = {
+    user_id?: true
+    club_id?: true
+  }
+
+  export type Users_clubsCountAggregateInputType = {
+    user_id?: true
+    club_id?: true
+    _all?: true
+  }
+
+  export type Users_clubsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which users_clubs to aggregate.
+     */
+    where?: users_clubsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users_clubs to fetch.
+     */
+    orderBy?: users_clubsOrderByWithRelationInput | users_clubsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: users_clubsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users_clubs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users_clubs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned users_clubs
+    **/
+    _count?: true | Users_clubsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Users_clubsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Users_clubsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Users_clubsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Users_clubsMaxAggregateInputType
+  }
+
+  export type GetUsers_clubsAggregateType<T extends Users_clubsAggregateArgs> = {
+        [P in keyof T & keyof AggregateUsers_clubs]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUsers_clubs[P]>
+      : GetScalarType<T[P], AggregateUsers_clubs[P]>
+  }
+
+
+
+
+  export type users_clubsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: users_clubsWhereInput
+    orderBy?: users_clubsOrderByWithAggregationInput | users_clubsOrderByWithAggregationInput[]
+    by: Users_clubsScalarFieldEnum[] | Users_clubsScalarFieldEnum
+    having?: users_clubsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Users_clubsCountAggregateInputType | true
+    _avg?: Users_clubsAvgAggregateInputType
+    _sum?: Users_clubsSumAggregateInputType
+    _min?: Users_clubsMinAggregateInputType
+    _max?: Users_clubsMaxAggregateInputType
+  }
+
+  export type Users_clubsGroupByOutputType = {
+    user_id: number
+    club_id: number
+    _count: Users_clubsCountAggregateOutputType | null
+    _avg: Users_clubsAvgAggregateOutputType | null
+    _sum: Users_clubsSumAggregateOutputType | null
+    _min: Users_clubsMinAggregateOutputType | null
+    _max: Users_clubsMaxAggregateOutputType | null
+  }
+
+  type GetUsers_clubsGroupByPayload<T extends users_clubsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Users_clubsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Users_clubsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Users_clubsGroupByOutputType[P]>
+            : GetScalarType<T[P], Users_clubsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type users_clubsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    user_id?: boolean
+    club_id?: boolean
+    clubs?: boolean | clubsDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["users_clubs"]>
+
+  export type users_clubsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    user_id?: boolean
+    club_id?: boolean
+    clubs?: boolean | clubsDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["users_clubs"]>
+
+  export type users_clubsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    user_id?: boolean
+    club_id?: boolean
+    clubs?: boolean | clubsDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["users_clubs"]>
+
+  export type users_clubsSelectScalar = {
+    user_id?: boolean
+    club_id?: boolean
+  }
+
+  export type users_clubsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"user_id" | "club_id", ExtArgs["result"]["users_clubs"]>
+  export type users_clubsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    clubs?: boolean | clubsDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
+  }
+  export type users_clubsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    clubs?: boolean | clubsDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
+  }
+  export type users_clubsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    clubs?: boolean | clubsDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
+  }
+
+  export type $users_clubsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "users_clubs"
+    objects: {
+      clubs: Prisma.$clubsPayload<ExtArgs>
+      users: Prisma.$usersPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      user_id: number
+      club_id: number
+    }, ExtArgs["result"]["users_clubs"]>
+    composites: {}
+  }
+
+  type users_clubsGetPayload<S extends boolean | null | undefined | users_clubsDefaultArgs> = $Result.GetResult<Prisma.$users_clubsPayload, S>
+
+  type users_clubsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<users_clubsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Users_clubsCountAggregateInputType | true
+    }
+
+  export interface users_clubsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['users_clubs'], meta: { name: 'users_clubs' } }
+    /**
+     * Find zero or one Users_clubs that matches the filter.
+     * @param {users_clubsFindUniqueArgs} args - Arguments to find a Users_clubs
+     * @example
+     * // Get one Users_clubs
+     * const users_clubs = await prisma.users_clubs.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends users_clubsFindUniqueArgs>(args: SelectSubset<T, users_clubsFindUniqueArgs<ExtArgs>>): Prisma__users_clubsClient<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Users_clubs that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {users_clubsFindUniqueOrThrowArgs} args - Arguments to find a Users_clubs
+     * @example
+     * // Get one Users_clubs
+     * const users_clubs = await prisma.users_clubs.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends users_clubsFindUniqueOrThrowArgs>(args: SelectSubset<T, users_clubsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__users_clubsClient<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Users_clubs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {users_clubsFindFirstArgs} args - Arguments to find a Users_clubs
+     * @example
+     * // Get one Users_clubs
+     * const users_clubs = await prisma.users_clubs.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends users_clubsFindFirstArgs>(args?: SelectSubset<T, users_clubsFindFirstArgs<ExtArgs>>): Prisma__users_clubsClient<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Users_clubs that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {users_clubsFindFirstOrThrowArgs} args - Arguments to find a Users_clubs
+     * @example
+     * // Get one Users_clubs
+     * const users_clubs = await prisma.users_clubs.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends users_clubsFindFirstOrThrowArgs>(args?: SelectSubset<T, users_clubsFindFirstOrThrowArgs<ExtArgs>>): Prisma__users_clubsClient<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Users_clubs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {users_clubsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Users_clubs
+     * const users_clubs = await prisma.users_clubs.findMany()
+     * 
+     * // Get first 10 Users_clubs
+     * const users_clubs = await prisma.users_clubs.findMany({ take: 10 })
+     * 
+     * // Only select the `user_id`
+     * const users_clubsWithUser_idOnly = await prisma.users_clubs.findMany({ select: { user_id: true } })
+     * 
+     */
+    findMany<T extends users_clubsFindManyArgs>(args?: SelectSubset<T, users_clubsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Users_clubs.
+     * @param {users_clubsCreateArgs} args - Arguments to create a Users_clubs.
+     * @example
+     * // Create one Users_clubs
+     * const Users_clubs = await prisma.users_clubs.create({
+     *   data: {
+     *     // ... data to create a Users_clubs
+     *   }
+     * })
+     * 
+     */
+    create<T extends users_clubsCreateArgs>(args: SelectSubset<T, users_clubsCreateArgs<ExtArgs>>): Prisma__users_clubsClient<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Users_clubs.
+     * @param {users_clubsCreateManyArgs} args - Arguments to create many Users_clubs.
+     * @example
+     * // Create many Users_clubs
+     * const users_clubs = await prisma.users_clubs.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends users_clubsCreateManyArgs>(args?: SelectSubset<T, users_clubsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Users_clubs and returns the data saved in the database.
+     * @param {users_clubsCreateManyAndReturnArgs} args - Arguments to create many Users_clubs.
+     * @example
+     * // Create many Users_clubs
+     * const users_clubs = await prisma.users_clubs.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Users_clubs and only return the `user_id`
+     * const users_clubsWithUser_idOnly = await prisma.users_clubs.createManyAndReturn({
+     *   select: { user_id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends users_clubsCreateManyAndReturnArgs>(args?: SelectSubset<T, users_clubsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Users_clubs.
+     * @param {users_clubsDeleteArgs} args - Arguments to delete one Users_clubs.
+     * @example
+     * // Delete one Users_clubs
+     * const Users_clubs = await prisma.users_clubs.delete({
+     *   where: {
+     *     // ... filter to delete one Users_clubs
+     *   }
+     * })
+     * 
+     */
+    delete<T extends users_clubsDeleteArgs>(args: SelectSubset<T, users_clubsDeleteArgs<ExtArgs>>): Prisma__users_clubsClient<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Users_clubs.
+     * @param {users_clubsUpdateArgs} args - Arguments to update one Users_clubs.
+     * @example
+     * // Update one Users_clubs
+     * const users_clubs = await prisma.users_clubs.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends users_clubsUpdateArgs>(args: SelectSubset<T, users_clubsUpdateArgs<ExtArgs>>): Prisma__users_clubsClient<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Users_clubs.
+     * @param {users_clubsDeleteManyArgs} args - Arguments to filter Users_clubs to delete.
+     * @example
+     * // Delete a few Users_clubs
+     * const { count } = await prisma.users_clubs.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends users_clubsDeleteManyArgs>(args?: SelectSubset<T, users_clubsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users_clubs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {users_clubsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Users_clubs
+     * const users_clubs = await prisma.users_clubs.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends users_clubsUpdateManyArgs>(args: SelectSubset<T, users_clubsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users_clubs and returns the data updated in the database.
+     * @param {users_clubsUpdateManyAndReturnArgs} args - Arguments to update many Users_clubs.
+     * @example
+     * // Update many Users_clubs
+     * const users_clubs = await prisma.users_clubs.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Users_clubs and only return the `user_id`
+     * const users_clubsWithUser_idOnly = await prisma.users_clubs.updateManyAndReturn({
+     *   select: { user_id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends users_clubsUpdateManyAndReturnArgs>(args: SelectSubset<T, users_clubsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Users_clubs.
+     * @param {users_clubsUpsertArgs} args - Arguments to update or create a Users_clubs.
+     * @example
+     * // Update or create a Users_clubs
+     * const users_clubs = await prisma.users_clubs.upsert({
+     *   create: {
+     *     // ... data to create a Users_clubs
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Users_clubs we want to update
+     *   }
+     * })
+     */
+    upsert<T extends users_clubsUpsertArgs>(args: SelectSubset<T, users_clubsUpsertArgs<ExtArgs>>): Prisma__users_clubsClient<$Result.GetResult<Prisma.$users_clubsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Users_clubs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {users_clubsCountArgs} args - Arguments to filter Users_clubs to count.
+     * @example
+     * // Count the number of Users_clubs
+     * const count = await prisma.users_clubs.count({
+     *   where: {
+     *     // ... the filter for the Users_clubs we want to count
+     *   }
+     * })
+    **/
+    count<T extends users_clubsCountArgs>(
+      args?: Subset<T, users_clubsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Users_clubsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Users_clubs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Users_clubsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Users_clubsAggregateArgs>(args: Subset<T, Users_clubsAggregateArgs>): Prisma.PrismaPromise<GetUsers_clubsAggregateType<T>>
+
+    /**
+     * Group by Users_clubs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {users_clubsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends users_clubsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: users_clubsGroupByArgs['orderBy'] }
+        : { orderBy?: users_clubsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, users_clubsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsers_clubsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the users_clubs model
+   */
+  readonly fields: users_clubsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for users_clubs.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__users_clubsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    clubs<T extends clubsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, clubsDefaultArgs<ExtArgs>>): Prisma__clubsClient<$Result.GetResult<Prisma.$clubsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the users_clubs model
+   */
+  interface users_clubsFieldRefs {
+    readonly user_id: FieldRef<"users_clubs", 'Int'>
+    readonly club_id: FieldRef<"users_clubs", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * users_clubs findUnique
+   */
+  export type users_clubsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
+    /**
+     * Filter, which users_clubs to fetch.
+     */
+    where: users_clubsWhereUniqueInput
+  }
+
+  /**
+   * users_clubs findUniqueOrThrow
+   */
+  export type users_clubsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
+    /**
+     * Filter, which users_clubs to fetch.
+     */
+    where: users_clubsWhereUniqueInput
+  }
+
+  /**
+   * users_clubs findFirst
+   */
+  export type users_clubsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
+    /**
+     * Filter, which users_clubs to fetch.
+     */
+    where?: users_clubsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users_clubs to fetch.
+     */
+    orderBy?: users_clubsOrderByWithRelationInput | users_clubsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for users_clubs.
+     */
+    cursor?: users_clubsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users_clubs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users_clubs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of users_clubs.
+     */
+    distinct?: Users_clubsScalarFieldEnum | Users_clubsScalarFieldEnum[]
+  }
+
+  /**
+   * users_clubs findFirstOrThrow
+   */
+  export type users_clubsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
+    /**
+     * Filter, which users_clubs to fetch.
+     */
+    where?: users_clubsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users_clubs to fetch.
+     */
+    orderBy?: users_clubsOrderByWithRelationInput | users_clubsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for users_clubs.
+     */
+    cursor?: users_clubsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users_clubs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users_clubs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of users_clubs.
+     */
+    distinct?: Users_clubsScalarFieldEnum | Users_clubsScalarFieldEnum[]
+  }
+
+  /**
+   * users_clubs findMany
+   */
+  export type users_clubsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
+    /**
+     * Filter, which users_clubs to fetch.
+     */
+    where?: users_clubsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users_clubs to fetch.
+     */
+    orderBy?: users_clubsOrderByWithRelationInput | users_clubsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing users_clubs.
+     */
+    cursor?: users_clubsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users_clubs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users_clubs.
+     */
+    skip?: number
+    distinct?: Users_clubsScalarFieldEnum | Users_clubsScalarFieldEnum[]
+  }
+
+  /**
+   * users_clubs create
+   */
+  export type users_clubsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a users_clubs.
+     */
+    data: XOR<users_clubsCreateInput, users_clubsUncheckedCreateInput>
+  }
+
+  /**
+   * users_clubs createMany
+   */
+  export type users_clubsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many users_clubs.
+     */
+    data: users_clubsCreateManyInput | users_clubsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * users_clubs createManyAndReturn
+   */
+  export type users_clubsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * The data used to create many users_clubs.
+     */
+    data: users_clubsCreateManyInput | users_clubsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * users_clubs update
+   */
+  export type users_clubsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a users_clubs.
+     */
+    data: XOR<users_clubsUpdateInput, users_clubsUncheckedUpdateInput>
+    /**
+     * Choose, which users_clubs to update.
+     */
+    where: users_clubsWhereUniqueInput
+  }
+
+  /**
+   * users_clubs updateMany
+   */
+  export type users_clubsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update users_clubs.
+     */
+    data: XOR<users_clubsUpdateManyMutationInput, users_clubsUncheckedUpdateManyInput>
+    /**
+     * Filter which users_clubs to update
+     */
+    where?: users_clubsWhereInput
+    /**
+     * Limit how many users_clubs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * users_clubs updateManyAndReturn
+   */
+  export type users_clubsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * The data used to update users_clubs.
+     */
+    data: XOR<users_clubsUpdateManyMutationInput, users_clubsUncheckedUpdateManyInput>
+    /**
+     * Filter which users_clubs to update
+     */
+    where?: users_clubsWhereInput
+    /**
+     * Limit how many users_clubs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * users_clubs upsert
+   */
+  export type users_clubsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the users_clubs to update in case it exists.
+     */
+    where: users_clubsWhereUniqueInput
+    /**
+     * In case the users_clubs found by the `where` argument doesn't exist, create a new users_clubs with this data.
+     */
+    create: XOR<users_clubsCreateInput, users_clubsUncheckedCreateInput>
+    /**
+     * In case the users_clubs was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<users_clubsUpdateInput, users_clubsUncheckedUpdateInput>
+  }
+
+  /**
+   * users_clubs delete
+   */
+  export type users_clubsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
+    /**
+     * Filter which users_clubs to delete.
+     */
+    where: users_clubsWhereUniqueInput
+  }
+
+  /**
+   * users_clubs deleteMany
+   */
+  export type users_clubsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which users_clubs to delete
+     */
+    where?: users_clubsWhereInput
+    /**
+     * Limit how many users_clubs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * users_clubs without action
+   */
+  export type users_clubsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users_clubs
+     */
+    select?: users_clubsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users_clubs
+     */
+    omit?: users_clubsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: users_clubsInclude<ExtArgs> | null
   }
 
 
@@ -3183,7 +5644,8 @@ export namespace Prisma {
     title: 'title',
     content: 'content',
     created_at: 'created_at',
-    author_id: 'author_id'
+    author_id: 'author_id',
+    club_id: 'club_id'
   };
 
   export type PostsScalarFieldEnum = (typeof PostsScalarFieldEnum)[keyof typeof PostsScalarFieldEnum]
@@ -3196,6 +5658,22 @@ export namespace Prisma {
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
+
+  export const ClubsScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type ClubsScalarFieldEnum = (typeof ClubsScalarFieldEnum)[keyof typeof ClubsScalarFieldEnum]
+
+
+  export const Users_clubsScalarFieldEnum: {
+    user_id: 'user_id',
+    club_id: 'club_id'
+  };
+
+  export type Users_clubsScalarFieldEnum = (typeof Users_clubsScalarFieldEnum)[keyof typeof Users_clubsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3295,7 +5773,9 @@ export namespace Prisma {
     content?: StringFilter<"posts"> | string
     created_at?: DateTimeNullableFilter<"posts"> | Date | string | null
     author_id?: IntFilter<"posts"> | number
+    club_id?: IntNullableFilter<"posts"> | number | null
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    clubs?: XOR<ClubsNullableScalarRelationFilter, clubsWhereInput> | null
   }
 
   export type postsOrderByWithRelationInput = {
@@ -3304,7 +5784,9 @@ export namespace Prisma {
     content?: SortOrder
     created_at?: SortOrderInput | SortOrder
     author_id?: SortOrder
+    club_id?: SortOrderInput | SortOrder
     users?: usersOrderByWithRelationInput
+    clubs?: clubsOrderByWithRelationInput
   }
 
   export type postsWhereUniqueInput = Prisma.AtLeast<{
@@ -3316,7 +5798,9 @@ export namespace Prisma {
     content?: StringFilter<"posts"> | string
     created_at?: DateTimeNullableFilter<"posts"> | Date | string | null
     author_id?: IntFilter<"posts"> | number
+    club_id?: IntNullableFilter<"posts"> | number | null
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    clubs?: XOR<ClubsNullableScalarRelationFilter, clubsWhereInput> | null
   }, "id">
 
   export type postsOrderByWithAggregationInput = {
@@ -3325,6 +5809,7 @@ export namespace Prisma {
     content?: SortOrder
     created_at?: SortOrderInput | SortOrder
     author_id?: SortOrder
+    club_id?: SortOrderInput | SortOrder
     _count?: postsCountOrderByAggregateInput
     _avg?: postsAvgOrderByAggregateInput
     _max?: postsMaxOrderByAggregateInput
@@ -3341,6 +5826,7 @@ export namespace Prisma {
     content?: StringWithAggregatesFilter<"posts"> | string
     created_at?: DateTimeNullableWithAggregatesFilter<"posts"> | Date | string | null
     author_id?: IntWithAggregatesFilter<"posts"> | number
+    club_id?: IntNullableWithAggregatesFilter<"posts"> | number | null
   }
 
   export type usersWhereInput = {
@@ -3351,6 +5837,7 @@ export namespace Prisma {
     username?: StringNullableFilter<"users"> | string | null
     password?: StringNullableFilter<"users"> | string | null
     posts?: PostsListRelationFilter
+    users_clubs?: Users_clubsListRelationFilter
   }
 
   export type usersOrderByWithRelationInput = {
@@ -3358,6 +5845,7 @@ export namespace Prisma {
     username?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
     posts?: postsOrderByRelationAggregateInput
+    users_clubs?: users_clubsOrderByRelationAggregateInput
   }
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
@@ -3368,6 +5856,7 @@ export namespace Prisma {
     NOT?: usersWhereInput | usersWhereInput[]
     password?: StringNullableFilter<"users"> | string | null
     posts?: PostsListRelationFilter
+    users_clubs?: Users_clubsListRelationFilter
   }, "id" | "username">
 
   export type usersOrderByWithAggregationInput = {
@@ -3390,11 +5879,103 @@ export namespace Prisma {
     password?: StringNullableWithAggregatesFilter<"users"> | string | null
   }
 
+  export type clubsWhereInput = {
+    AND?: clubsWhereInput | clubsWhereInput[]
+    OR?: clubsWhereInput[]
+    NOT?: clubsWhereInput | clubsWhereInput[]
+    id?: IntFilter<"clubs"> | number
+    name?: StringFilter<"clubs"> | string
+    posts?: PostsListRelationFilter
+    users_clubs?: Users_clubsListRelationFilter
+  }
+
+  export type clubsOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    posts?: postsOrderByRelationAggregateInput
+    users_clubs?: users_clubsOrderByRelationAggregateInput
+  }
+
+  export type clubsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: clubsWhereInput | clubsWhereInput[]
+    OR?: clubsWhereInput[]
+    NOT?: clubsWhereInput | clubsWhereInput[]
+    posts?: PostsListRelationFilter
+    users_clubs?: Users_clubsListRelationFilter
+  }, "id" | "name">
+
+  export type clubsOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: clubsCountOrderByAggregateInput
+    _avg?: clubsAvgOrderByAggregateInput
+    _max?: clubsMaxOrderByAggregateInput
+    _min?: clubsMinOrderByAggregateInput
+    _sum?: clubsSumOrderByAggregateInput
+  }
+
+  export type clubsScalarWhereWithAggregatesInput = {
+    AND?: clubsScalarWhereWithAggregatesInput | clubsScalarWhereWithAggregatesInput[]
+    OR?: clubsScalarWhereWithAggregatesInput[]
+    NOT?: clubsScalarWhereWithAggregatesInput | clubsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"clubs"> | number
+    name?: StringWithAggregatesFilter<"clubs"> | string
+  }
+
+  export type users_clubsWhereInput = {
+    AND?: users_clubsWhereInput | users_clubsWhereInput[]
+    OR?: users_clubsWhereInput[]
+    NOT?: users_clubsWhereInput | users_clubsWhereInput[]
+    user_id?: IntFilter<"users_clubs"> | number
+    club_id?: IntFilter<"users_clubs"> | number
+    clubs?: XOR<ClubsScalarRelationFilter, clubsWhereInput>
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+  }
+
+  export type users_clubsOrderByWithRelationInput = {
+    user_id?: SortOrder
+    club_id?: SortOrder
+    clubs?: clubsOrderByWithRelationInput
+    users?: usersOrderByWithRelationInput
+  }
+
+  export type users_clubsWhereUniqueInput = Prisma.AtLeast<{
+    user_id_club_id?: users_clubsUser_idClub_idCompoundUniqueInput
+    AND?: users_clubsWhereInput | users_clubsWhereInput[]
+    OR?: users_clubsWhereInput[]
+    NOT?: users_clubsWhereInput | users_clubsWhereInput[]
+    user_id?: IntFilter<"users_clubs"> | number
+    club_id?: IntFilter<"users_clubs"> | number
+    clubs?: XOR<ClubsScalarRelationFilter, clubsWhereInput>
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+  }, "user_id_club_id">
+
+  export type users_clubsOrderByWithAggregationInput = {
+    user_id?: SortOrder
+    club_id?: SortOrder
+    _count?: users_clubsCountOrderByAggregateInput
+    _avg?: users_clubsAvgOrderByAggregateInput
+    _max?: users_clubsMaxOrderByAggregateInput
+    _min?: users_clubsMinOrderByAggregateInput
+    _sum?: users_clubsSumOrderByAggregateInput
+  }
+
+  export type users_clubsScalarWhereWithAggregatesInput = {
+    AND?: users_clubsScalarWhereWithAggregatesInput | users_clubsScalarWhereWithAggregatesInput[]
+    OR?: users_clubsScalarWhereWithAggregatesInput[]
+    NOT?: users_clubsScalarWhereWithAggregatesInput | users_clubsScalarWhereWithAggregatesInput[]
+    user_id?: IntWithAggregatesFilter<"users_clubs"> | number
+    club_id?: IntWithAggregatesFilter<"users_clubs"> | number
+  }
+
   export type postsCreateInput = {
     title: string
     content: string
     created_at?: Date | string | null
     users: usersCreateNestedOneWithoutPostsInput
+    clubs?: clubsCreateNestedOneWithoutPostsInput
   }
 
   export type postsUncheckedCreateInput = {
@@ -3403,6 +5984,7 @@ export namespace Prisma {
     content: string
     created_at?: Date | string | null
     author_id: number
+    club_id?: number | null
   }
 
   export type postsUpdateInput = {
@@ -3410,6 +5992,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     users?: usersUpdateOneRequiredWithoutPostsNestedInput
+    clubs?: clubsUpdateOneWithoutPostsNestedInput
   }
 
   export type postsUncheckedUpdateInput = {
@@ -3418,6 +6001,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     author_id?: IntFieldUpdateOperationsInput | number
+    club_id?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type postsCreateManyInput = {
@@ -3426,6 +6010,7 @@ export namespace Prisma {
     content: string
     created_at?: Date | string | null
     author_id: number
+    club_id?: number | null
   }
 
   export type postsUpdateManyMutationInput = {
@@ -3440,12 +6025,14 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     author_id?: IntFieldUpdateOperationsInput | number
+    club_id?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type usersCreateInput = {
     username?: string | null
     password?: string | null
     posts?: postsCreateNestedManyWithoutUsersInput
+    users_clubs?: users_clubsCreateNestedManyWithoutUsersInput
   }
 
   export type usersUncheckedCreateInput = {
@@ -3453,12 +6040,14 @@ export namespace Prisma {
     username?: string | null
     password?: string | null
     posts?: postsUncheckedCreateNestedManyWithoutUsersInput
+    users_clubs?: users_clubsUncheckedCreateNestedManyWithoutUsersInput
   }
 
   export type usersUpdateInput = {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: postsUpdateManyWithoutUsersNestedInput
+    users_clubs?: users_clubsUpdateManyWithoutUsersNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
@@ -3466,6 +6055,7 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: postsUncheckedUpdateManyWithoutUsersNestedInput
+    users_clubs?: users_clubsUncheckedUpdateManyWithoutUsersNestedInput
   }
 
   export type usersCreateManyInput = {
@@ -3483,6 +6073,80 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type clubsCreateInput = {
+    name: string
+    posts?: postsCreateNestedManyWithoutClubsInput
+    users_clubs?: users_clubsCreateNestedManyWithoutClubsInput
+  }
+
+  export type clubsUncheckedCreateInput = {
+    id?: number
+    name: string
+    posts?: postsUncheckedCreateNestedManyWithoutClubsInput
+    users_clubs?: users_clubsUncheckedCreateNestedManyWithoutClubsInput
+  }
+
+  export type clubsUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    posts?: postsUpdateManyWithoutClubsNestedInput
+    users_clubs?: users_clubsUpdateManyWithoutClubsNestedInput
+  }
+
+  export type clubsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    posts?: postsUncheckedUpdateManyWithoutClubsNestedInput
+    users_clubs?: users_clubsUncheckedUpdateManyWithoutClubsNestedInput
+  }
+
+  export type clubsCreateManyInput = {
+    id?: number
+    name: string
+  }
+
+  export type clubsUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type clubsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type users_clubsCreateInput = {
+    clubs: clubsCreateNestedOneWithoutUsers_clubsInput
+    users: usersCreateNestedOneWithoutUsers_clubsInput
+  }
+
+  export type users_clubsUncheckedCreateInput = {
+    user_id: number
+    club_id: number
+  }
+
+  export type users_clubsUpdateInput = {
+    clubs?: clubsUpdateOneRequiredWithoutUsers_clubsNestedInput
+    users?: usersUpdateOneRequiredWithoutUsers_clubsNestedInput
+  }
+
+  export type users_clubsUncheckedUpdateInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
+    club_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type users_clubsCreateManyInput = {
+    user_id: number
+    club_id: number
+  }
+
+  export type users_clubsUpdateManyMutationInput = {
+
+  }
+
+  export type users_clubsUncheckedUpdateManyInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
+    club_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -3522,9 +6186,25 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type UsersScalarRelationFilter = {
     is?: usersWhereInput
     isNot?: usersWhereInput
+  }
+
+  export type ClubsNullableScalarRelationFilter = {
+    is?: clubsWhereInput | null
+    isNot?: clubsWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -3538,11 +6218,13 @@ export namespace Prisma {
     content?: SortOrder
     created_at?: SortOrder
     author_id?: SortOrder
+    club_id?: SortOrder
   }
 
   export type postsAvgOrderByAggregateInput = {
     id?: SortOrder
     author_id?: SortOrder
+    club_id?: SortOrder
   }
 
   export type postsMaxOrderByAggregateInput = {
@@ -3551,6 +6233,7 @@ export namespace Prisma {
     content?: SortOrder
     created_at?: SortOrder
     author_id?: SortOrder
+    club_id?: SortOrder
   }
 
   export type postsMinOrderByAggregateInput = {
@@ -3559,11 +6242,13 @@ export namespace Prisma {
     content?: SortOrder
     created_at?: SortOrder
     author_id?: SortOrder
+    club_id?: SortOrder
   }
 
   export type postsSumOrderByAggregateInput = {
     id?: SortOrder
     author_id?: SortOrder
+    club_id?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -3614,6 +6299,22 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -3635,7 +6336,17 @@ export namespace Prisma {
     none?: postsWhereInput
   }
 
+  export type Users_clubsListRelationFilter = {
+    every?: users_clubsWhereInput
+    some?: users_clubsWhereInput
+    none?: users_clubsWhereInput
+  }
+
   export type postsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type users_clubsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -3683,10 +6394,74 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type clubsCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type clubsAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type clubsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type clubsMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type clubsSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ClubsScalarRelationFilter = {
+    is?: clubsWhereInput
+    isNot?: clubsWhereInput
+  }
+
+  export type users_clubsUser_idClub_idCompoundUniqueInput = {
+    user_id: number
+    club_id: number
+  }
+
+  export type users_clubsCountOrderByAggregateInput = {
+    user_id?: SortOrder
+    club_id?: SortOrder
+  }
+
+  export type users_clubsAvgOrderByAggregateInput = {
+    user_id?: SortOrder
+    club_id?: SortOrder
+  }
+
+  export type users_clubsMaxOrderByAggregateInput = {
+    user_id?: SortOrder
+    club_id?: SortOrder
+  }
+
+  export type users_clubsMinOrderByAggregateInput = {
+    user_id?: SortOrder
+    club_id?: SortOrder
+  }
+
+  export type users_clubsSumOrderByAggregateInput = {
+    user_id?: SortOrder
+    club_id?: SortOrder
+  }
+
   export type usersCreateNestedOneWithoutPostsInput = {
     create?: XOR<usersCreateWithoutPostsInput, usersUncheckedCreateWithoutPostsInput>
     connectOrCreate?: usersCreateOrConnectWithoutPostsInput
     connect?: usersWhereUniqueInput
+  }
+
+  export type clubsCreateNestedOneWithoutPostsInput = {
+    create?: XOR<clubsCreateWithoutPostsInput, clubsUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: clubsCreateOrConnectWithoutPostsInput
+    connect?: clubsWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -3705,8 +6480,26 @@ export namespace Prisma {
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutPostsInput, usersUpdateWithoutPostsInput>, usersUncheckedUpdateWithoutPostsInput>
   }
 
+  export type clubsUpdateOneWithoutPostsNestedInput = {
+    create?: XOR<clubsCreateWithoutPostsInput, clubsUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: clubsCreateOrConnectWithoutPostsInput
+    upsert?: clubsUpsertWithoutPostsInput
+    disconnect?: clubsWhereInput | boolean
+    delete?: clubsWhereInput | boolean
+    connect?: clubsWhereUniqueInput
+    update?: XOR<XOR<clubsUpdateToOneWithWhereWithoutPostsInput, clubsUpdateWithoutPostsInput>, clubsUncheckedUpdateWithoutPostsInput>
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
@@ -3720,11 +6513,25 @@ export namespace Prisma {
     connect?: postsWhereUniqueInput | postsWhereUniqueInput[]
   }
 
+  export type users_clubsCreateNestedManyWithoutUsersInput = {
+    create?: XOR<users_clubsCreateWithoutUsersInput, users_clubsUncheckedCreateWithoutUsersInput> | users_clubsCreateWithoutUsersInput[] | users_clubsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: users_clubsCreateOrConnectWithoutUsersInput | users_clubsCreateOrConnectWithoutUsersInput[]
+    createMany?: users_clubsCreateManyUsersInputEnvelope
+    connect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+  }
+
   export type postsUncheckedCreateNestedManyWithoutUsersInput = {
     create?: XOR<postsCreateWithoutUsersInput, postsUncheckedCreateWithoutUsersInput> | postsCreateWithoutUsersInput[] | postsUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: postsCreateOrConnectWithoutUsersInput | postsCreateOrConnectWithoutUsersInput[]
     createMany?: postsCreateManyUsersInputEnvelope
     connect?: postsWhereUniqueInput | postsWhereUniqueInput[]
+  }
+
+  export type users_clubsUncheckedCreateNestedManyWithoutUsersInput = {
+    create?: XOR<users_clubsCreateWithoutUsersInput, users_clubsUncheckedCreateWithoutUsersInput> | users_clubsCreateWithoutUsersInput[] | users_clubsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: users_clubsCreateOrConnectWithoutUsersInput | users_clubsCreateOrConnectWithoutUsersInput[]
+    createMany?: users_clubsCreateManyUsersInputEnvelope
+    connect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -3745,6 +6552,20 @@ export namespace Prisma {
     deleteMany?: postsScalarWhereInput | postsScalarWhereInput[]
   }
 
+  export type users_clubsUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<users_clubsCreateWithoutUsersInput, users_clubsUncheckedCreateWithoutUsersInput> | users_clubsCreateWithoutUsersInput[] | users_clubsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: users_clubsCreateOrConnectWithoutUsersInput | users_clubsCreateOrConnectWithoutUsersInput[]
+    upsert?: users_clubsUpsertWithWhereUniqueWithoutUsersInput | users_clubsUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: users_clubsCreateManyUsersInputEnvelope
+    set?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    disconnect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    delete?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    connect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    update?: users_clubsUpdateWithWhereUniqueWithoutUsersInput | users_clubsUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: users_clubsUpdateManyWithWhereWithoutUsersInput | users_clubsUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: users_clubsScalarWhereInput | users_clubsScalarWhereInput[]
+  }
+
   export type postsUncheckedUpdateManyWithoutUsersNestedInput = {
     create?: XOR<postsCreateWithoutUsersInput, postsUncheckedCreateWithoutUsersInput> | postsCreateWithoutUsersInput[] | postsUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: postsCreateOrConnectWithoutUsersInput | postsCreateOrConnectWithoutUsersInput[]
@@ -3757,6 +6578,132 @@ export namespace Prisma {
     update?: postsUpdateWithWhereUniqueWithoutUsersInput | postsUpdateWithWhereUniqueWithoutUsersInput[]
     updateMany?: postsUpdateManyWithWhereWithoutUsersInput | postsUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: postsScalarWhereInput | postsScalarWhereInput[]
+  }
+
+  export type users_clubsUncheckedUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<users_clubsCreateWithoutUsersInput, users_clubsUncheckedCreateWithoutUsersInput> | users_clubsCreateWithoutUsersInput[] | users_clubsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: users_clubsCreateOrConnectWithoutUsersInput | users_clubsCreateOrConnectWithoutUsersInput[]
+    upsert?: users_clubsUpsertWithWhereUniqueWithoutUsersInput | users_clubsUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: users_clubsCreateManyUsersInputEnvelope
+    set?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    disconnect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    delete?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    connect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    update?: users_clubsUpdateWithWhereUniqueWithoutUsersInput | users_clubsUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: users_clubsUpdateManyWithWhereWithoutUsersInput | users_clubsUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: users_clubsScalarWhereInput | users_clubsScalarWhereInput[]
+  }
+
+  export type postsCreateNestedManyWithoutClubsInput = {
+    create?: XOR<postsCreateWithoutClubsInput, postsUncheckedCreateWithoutClubsInput> | postsCreateWithoutClubsInput[] | postsUncheckedCreateWithoutClubsInput[]
+    connectOrCreate?: postsCreateOrConnectWithoutClubsInput | postsCreateOrConnectWithoutClubsInput[]
+    createMany?: postsCreateManyClubsInputEnvelope
+    connect?: postsWhereUniqueInput | postsWhereUniqueInput[]
+  }
+
+  export type users_clubsCreateNestedManyWithoutClubsInput = {
+    create?: XOR<users_clubsCreateWithoutClubsInput, users_clubsUncheckedCreateWithoutClubsInput> | users_clubsCreateWithoutClubsInput[] | users_clubsUncheckedCreateWithoutClubsInput[]
+    connectOrCreate?: users_clubsCreateOrConnectWithoutClubsInput | users_clubsCreateOrConnectWithoutClubsInput[]
+    createMany?: users_clubsCreateManyClubsInputEnvelope
+    connect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+  }
+
+  export type postsUncheckedCreateNestedManyWithoutClubsInput = {
+    create?: XOR<postsCreateWithoutClubsInput, postsUncheckedCreateWithoutClubsInput> | postsCreateWithoutClubsInput[] | postsUncheckedCreateWithoutClubsInput[]
+    connectOrCreate?: postsCreateOrConnectWithoutClubsInput | postsCreateOrConnectWithoutClubsInput[]
+    createMany?: postsCreateManyClubsInputEnvelope
+    connect?: postsWhereUniqueInput | postsWhereUniqueInput[]
+  }
+
+  export type users_clubsUncheckedCreateNestedManyWithoutClubsInput = {
+    create?: XOR<users_clubsCreateWithoutClubsInput, users_clubsUncheckedCreateWithoutClubsInput> | users_clubsCreateWithoutClubsInput[] | users_clubsUncheckedCreateWithoutClubsInput[]
+    connectOrCreate?: users_clubsCreateOrConnectWithoutClubsInput | users_clubsCreateOrConnectWithoutClubsInput[]
+    createMany?: users_clubsCreateManyClubsInputEnvelope
+    connect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+  }
+
+  export type postsUpdateManyWithoutClubsNestedInput = {
+    create?: XOR<postsCreateWithoutClubsInput, postsUncheckedCreateWithoutClubsInput> | postsCreateWithoutClubsInput[] | postsUncheckedCreateWithoutClubsInput[]
+    connectOrCreate?: postsCreateOrConnectWithoutClubsInput | postsCreateOrConnectWithoutClubsInput[]
+    upsert?: postsUpsertWithWhereUniqueWithoutClubsInput | postsUpsertWithWhereUniqueWithoutClubsInput[]
+    createMany?: postsCreateManyClubsInputEnvelope
+    set?: postsWhereUniqueInput | postsWhereUniqueInput[]
+    disconnect?: postsWhereUniqueInput | postsWhereUniqueInput[]
+    delete?: postsWhereUniqueInput | postsWhereUniqueInput[]
+    connect?: postsWhereUniqueInput | postsWhereUniqueInput[]
+    update?: postsUpdateWithWhereUniqueWithoutClubsInput | postsUpdateWithWhereUniqueWithoutClubsInput[]
+    updateMany?: postsUpdateManyWithWhereWithoutClubsInput | postsUpdateManyWithWhereWithoutClubsInput[]
+    deleteMany?: postsScalarWhereInput | postsScalarWhereInput[]
+  }
+
+  export type users_clubsUpdateManyWithoutClubsNestedInput = {
+    create?: XOR<users_clubsCreateWithoutClubsInput, users_clubsUncheckedCreateWithoutClubsInput> | users_clubsCreateWithoutClubsInput[] | users_clubsUncheckedCreateWithoutClubsInput[]
+    connectOrCreate?: users_clubsCreateOrConnectWithoutClubsInput | users_clubsCreateOrConnectWithoutClubsInput[]
+    upsert?: users_clubsUpsertWithWhereUniqueWithoutClubsInput | users_clubsUpsertWithWhereUniqueWithoutClubsInput[]
+    createMany?: users_clubsCreateManyClubsInputEnvelope
+    set?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    disconnect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    delete?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    connect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    update?: users_clubsUpdateWithWhereUniqueWithoutClubsInput | users_clubsUpdateWithWhereUniqueWithoutClubsInput[]
+    updateMany?: users_clubsUpdateManyWithWhereWithoutClubsInput | users_clubsUpdateManyWithWhereWithoutClubsInput[]
+    deleteMany?: users_clubsScalarWhereInput | users_clubsScalarWhereInput[]
+  }
+
+  export type postsUncheckedUpdateManyWithoutClubsNestedInput = {
+    create?: XOR<postsCreateWithoutClubsInput, postsUncheckedCreateWithoutClubsInput> | postsCreateWithoutClubsInput[] | postsUncheckedCreateWithoutClubsInput[]
+    connectOrCreate?: postsCreateOrConnectWithoutClubsInput | postsCreateOrConnectWithoutClubsInput[]
+    upsert?: postsUpsertWithWhereUniqueWithoutClubsInput | postsUpsertWithWhereUniqueWithoutClubsInput[]
+    createMany?: postsCreateManyClubsInputEnvelope
+    set?: postsWhereUniqueInput | postsWhereUniqueInput[]
+    disconnect?: postsWhereUniqueInput | postsWhereUniqueInput[]
+    delete?: postsWhereUniqueInput | postsWhereUniqueInput[]
+    connect?: postsWhereUniqueInput | postsWhereUniqueInput[]
+    update?: postsUpdateWithWhereUniqueWithoutClubsInput | postsUpdateWithWhereUniqueWithoutClubsInput[]
+    updateMany?: postsUpdateManyWithWhereWithoutClubsInput | postsUpdateManyWithWhereWithoutClubsInput[]
+    deleteMany?: postsScalarWhereInput | postsScalarWhereInput[]
+  }
+
+  export type users_clubsUncheckedUpdateManyWithoutClubsNestedInput = {
+    create?: XOR<users_clubsCreateWithoutClubsInput, users_clubsUncheckedCreateWithoutClubsInput> | users_clubsCreateWithoutClubsInput[] | users_clubsUncheckedCreateWithoutClubsInput[]
+    connectOrCreate?: users_clubsCreateOrConnectWithoutClubsInput | users_clubsCreateOrConnectWithoutClubsInput[]
+    upsert?: users_clubsUpsertWithWhereUniqueWithoutClubsInput | users_clubsUpsertWithWhereUniqueWithoutClubsInput[]
+    createMany?: users_clubsCreateManyClubsInputEnvelope
+    set?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    disconnect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    delete?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    connect?: users_clubsWhereUniqueInput | users_clubsWhereUniqueInput[]
+    update?: users_clubsUpdateWithWhereUniqueWithoutClubsInput | users_clubsUpdateWithWhereUniqueWithoutClubsInput[]
+    updateMany?: users_clubsUpdateManyWithWhereWithoutClubsInput | users_clubsUpdateManyWithWhereWithoutClubsInput[]
+    deleteMany?: users_clubsScalarWhereInput | users_clubsScalarWhereInput[]
+  }
+
+  export type clubsCreateNestedOneWithoutUsers_clubsInput = {
+    create?: XOR<clubsCreateWithoutUsers_clubsInput, clubsUncheckedCreateWithoutUsers_clubsInput>
+    connectOrCreate?: clubsCreateOrConnectWithoutUsers_clubsInput
+    connect?: clubsWhereUniqueInput
+  }
+
+  export type usersCreateNestedOneWithoutUsers_clubsInput = {
+    create?: XOR<usersCreateWithoutUsers_clubsInput, usersUncheckedCreateWithoutUsers_clubsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutUsers_clubsInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type clubsUpdateOneRequiredWithoutUsers_clubsNestedInput = {
+    create?: XOR<clubsCreateWithoutUsers_clubsInput, clubsUncheckedCreateWithoutUsers_clubsInput>
+    connectOrCreate?: clubsCreateOrConnectWithoutUsers_clubsInput
+    upsert?: clubsUpsertWithoutUsers_clubsInput
+    connect?: clubsWhereUniqueInput
+    update?: XOR<XOR<clubsUpdateToOneWithWhereWithoutUsers_clubsInput, clubsUpdateWithoutUsers_clubsInput>, clubsUncheckedUpdateWithoutUsers_clubsInput>
+  }
+
+  export type usersUpdateOneRequiredWithoutUsers_clubsNestedInput = {
+    create?: XOR<usersCreateWithoutUsers_clubsInput, usersUncheckedCreateWithoutUsers_clubsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutUsers_clubsInput
+    upsert?: usersUpsertWithoutUsers_clubsInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutUsers_clubsInput, usersUpdateWithoutUsers_clubsInput>, usersUncheckedUpdateWithoutUsers_clubsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3793,6 +6740,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -3853,7 +6811,7 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -3861,7 +6819,23 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -3898,17 +6872,35 @@ export namespace Prisma {
   export type usersCreateWithoutPostsInput = {
     username?: string | null
     password?: string | null
+    users_clubs?: users_clubsCreateNestedManyWithoutUsersInput
   }
 
   export type usersUncheckedCreateWithoutPostsInput = {
     id?: number
     username?: string | null
     password?: string | null
+    users_clubs?: users_clubsUncheckedCreateNestedManyWithoutUsersInput
   }
 
   export type usersCreateOrConnectWithoutPostsInput = {
     where: usersWhereUniqueInput
     create: XOR<usersCreateWithoutPostsInput, usersUncheckedCreateWithoutPostsInput>
+  }
+
+  export type clubsCreateWithoutPostsInput = {
+    name: string
+    users_clubs?: users_clubsCreateNestedManyWithoutClubsInput
+  }
+
+  export type clubsUncheckedCreateWithoutPostsInput = {
+    id?: number
+    name: string
+    users_clubs?: users_clubsUncheckedCreateNestedManyWithoutClubsInput
+  }
+
+  export type clubsCreateOrConnectWithoutPostsInput = {
+    where: clubsWhereUniqueInput
+    create: XOR<clubsCreateWithoutPostsInput, clubsUncheckedCreateWithoutPostsInput>
   }
 
   export type usersUpsertWithoutPostsInput = {
@@ -3925,18 +6917,43 @@ export namespace Prisma {
   export type usersUpdateWithoutPostsInput = {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    users_clubs?: users_clubsUpdateManyWithoutUsersNestedInput
   }
 
   export type usersUncheckedUpdateWithoutPostsInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    users_clubs?: users_clubsUncheckedUpdateManyWithoutUsersNestedInput
+  }
+
+  export type clubsUpsertWithoutPostsInput = {
+    update: XOR<clubsUpdateWithoutPostsInput, clubsUncheckedUpdateWithoutPostsInput>
+    create: XOR<clubsCreateWithoutPostsInput, clubsUncheckedCreateWithoutPostsInput>
+    where?: clubsWhereInput
+  }
+
+  export type clubsUpdateToOneWithWhereWithoutPostsInput = {
+    where?: clubsWhereInput
+    data: XOR<clubsUpdateWithoutPostsInput, clubsUncheckedUpdateWithoutPostsInput>
+  }
+
+  export type clubsUpdateWithoutPostsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    users_clubs?: users_clubsUpdateManyWithoutClubsNestedInput
+  }
+
+  export type clubsUncheckedUpdateWithoutPostsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    users_clubs?: users_clubsUncheckedUpdateManyWithoutClubsNestedInput
   }
 
   export type postsCreateWithoutUsersInput = {
     title: string
     content: string
     created_at?: Date | string | null
+    clubs?: clubsCreateNestedOneWithoutPostsInput
   }
 
   export type postsUncheckedCreateWithoutUsersInput = {
@@ -3944,6 +6961,7 @@ export namespace Prisma {
     title: string
     content: string
     created_at?: Date | string | null
+    club_id?: number | null
   }
 
   export type postsCreateOrConnectWithoutUsersInput = {
@@ -3953,6 +6971,24 @@ export namespace Prisma {
 
   export type postsCreateManyUsersInputEnvelope = {
     data: postsCreateManyUsersInput | postsCreateManyUsersInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type users_clubsCreateWithoutUsersInput = {
+    clubs: clubsCreateNestedOneWithoutUsers_clubsInput
+  }
+
+  export type users_clubsUncheckedCreateWithoutUsersInput = {
+    club_id: number
+  }
+
+  export type users_clubsCreateOrConnectWithoutUsersInput = {
+    where: users_clubsWhereUniqueInput
+    create: XOR<users_clubsCreateWithoutUsersInput, users_clubsUncheckedCreateWithoutUsersInput>
+  }
+
+  export type users_clubsCreateManyUsersInputEnvelope = {
+    data: users_clubsCreateManyUsersInput | users_clubsCreateManyUsersInput[]
     skipDuplicates?: boolean
   }
 
@@ -3981,6 +7017,186 @@ export namespace Prisma {
     content?: StringFilter<"posts"> | string
     created_at?: DateTimeNullableFilter<"posts"> | Date | string | null
     author_id?: IntFilter<"posts"> | number
+    club_id?: IntNullableFilter<"posts"> | number | null
+  }
+
+  export type users_clubsUpsertWithWhereUniqueWithoutUsersInput = {
+    where: users_clubsWhereUniqueInput
+    update: XOR<users_clubsUpdateWithoutUsersInput, users_clubsUncheckedUpdateWithoutUsersInput>
+    create: XOR<users_clubsCreateWithoutUsersInput, users_clubsUncheckedCreateWithoutUsersInput>
+  }
+
+  export type users_clubsUpdateWithWhereUniqueWithoutUsersInput = {
+    where: users_clubsWhereUniqueInput
+    data: XOR<users_clubsUpdateWithoutUsersInput, users_clubsUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type users_clubsUpdateManyWithWhereWithoutUsersInput = {
+    where: users_clubsScalarWhereInput
+    data: XOR<users_clubsUpdateManyMutationInput, users_clubsUncheckedUpdateManyWithoutUsersInput>
+  }
+
+  export type users_clubsScalarWhereInput = {
+    AND?: users_clubsScalarWhereInput | users_clubsScalarWhereInput[]
+    OR?: users_clubsScalarWhereInput[]
+    NOT?: users_clubsScalarWhereInput | users_clubsScalarWhereInput[]
+    user_id?: IntFilter<"users_clubs"> | number
+    club_id?: IntFilter<"users_clubs"> | number
+  }
+
+  export type postsCreateWithoutClubsInput = {
+    title: string
+    content: string
+    created_at?: Date | string | null
+    users: usersCreateNestedOneWithoutPostsInput
+  }
+
+  export type postsUncheckedCreateWithoutClubsInput = {
+    id?: number
+    title: string
+    content: string
+    created_at?: Date | string | null
+    author_id: number
+  }
+
+  export type postsCreateOrConnectWithoutClubsInput = {
+    where: postsWhereUniqueInput
+    create: XOR<postsCreateWithoutClubsInput, postsUncheckedCreateWithoutClubsInput>
+  }
+
+  export type postsCreateManyClubsInputEnvelope = {
+    data: postsCreateManyClubsInput | postsCreateManyClubsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type users_clubsCreateWithoutClubsInput = {
+    users: usersCreateNestedOneWithoutUsers_clubsInput
+  }
+
+  export type users_clubsUncheckedCreateWithoutClubsInput = {
+    user_id: number
+  }
+
+  export type users_clubsCreateOrConnectWithoutClubsInput = {
+    where: users_clubsWhereUniqueInput
+    create: XOR<users_clubsCreateWithoutClubsInput, users_clubsUncheckedCreateWithoutClubsInput>
+  }
+
+  export type users_clubsCreateManyClubsInputEnvelope = {
+    data: users_clubsCreateManyClubsInput | users_clubsCreateManyClubsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type postsUpsertWithWhereUniqueWithoutClubsInput = {
+    where: postsWhereUniqueInput
+    update: XOR<postsUpdateWithoutClubsInput, postsUncheckedUpdateWithoutClubsInput>
+    create: XOR<postsCreateWithoutClubsInput, postsUncheckedCreateWithoutClubsInput>
+  }
+
+  export type postsUpdateWithWhereUniqueWithoutClubsInput = {
+    where: postsWhereUniqueInput
+    data: XOR<postsUpdateWithoutClubsInput, postsUncheckedUpdateWithoutClubsInput>
+  }
+
+  export type postsUpdateManyWithWhereWithoutClubsInput = {
+    where: postsScalarWhereInput
+    data: XOR<postsUpdateManyMutationInput, postsUncheckedUpdateManyWithoutClubsInput>
+  }
+
+  export type users_clubsUpsertWithWhereUniqueWithoutClubsInput = {
+    where: users_clubsWhereUniqueInput
+    update: XOR<users_clubsUpdateWithoutClubsInput, users_clubsUncheckedUpdateWithoutClubsInput>
+    create: XOR<users_clubsCreateWithoutClubsInput, users_clubsUncheckedCreateWithoutClubsInput>
+  }
+
+  export type users_clubsUpdateWithWhereUniqueWithoutClubsInput = {
+    where: users_clubsWhereUniqueInput
+    data: XOR<users_clubsUpdateWithoutClubsInput, users_clubsUncheckedUpdateWithoutClubsInput>
+  }
+
+  export type users_clubsUpdateManyWithWhereWithoutClubsInput = {
+    where: users_clubsScalarWhereInput
+    data: XOR<users_clubsUpdateManyMutationInput, users_clubsUncheckedUpdateManyWithoutClubsInput>
+  }
+
+  export type clubsCreateWithoutUsers_clubsInput = {
+    name: string
+    posts?: postsCreateNestedManyWithoutClubsInput
+  }
+
+  export type clubsUncheckedCreateWithoutUsers_clubsInput = {
+    id?: number
+    name: string
+    posts?: postsUncheckedCreateNestedManyWithoutClubsInput
+  }
+
+  export type clubsCreateOrConnectWithoutUsers_clubsInput = {
+    where: clubsWhereUniqueInput
+    create: XOR<clubsCreateWithoutUsers_clubsInput, clubsUncheckedCreateWithoutUsers_clubsInput>
+  }
+
+  export type usersCreateWithoutUsers_clubsInput = {
+    username?: string | null
+    password?: string | null
+    posts?: postsCreateNestedManyWithoutUsersInput
+  }
+
+  export type usersUncheckedCreateWithoutUsers_clubsInput = {
+    id?: number
+    username?: string | null
+    password?: string | null
+    posts?: postsUncheckedCreateNestedManyWithoutUsersInput
+  }
+
+  export type usersCreateOrConnectWithoutUsers_clubsInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutUsers_clubsInput, usersUncheckedCreateWithoutUsers_clubsInput>
+  }
+
+  export type clubsUpsertWithoutUsers_clubsInput = {
+    update: XOR<clubsUpdateWithoutUsers_clubsInput, clubsUncheckedUpdateWithoutUsers_clubsInput>
+    create: XOR<clubsCreateWithoutUsers_clubsInput, clubsUncheckedCreateWithoutUsers_clubsInput>
+    where?: clubsWhereInput
+  }
+
+  export type clubsUpdateToOneWithWhereWithoutUsers_clubsInput = {
+    where?: clubsWhereInput
+    data: XOR<clubsUpdateWithoutUsers_clubsInput, clubsUncheckedUpdateWithoutUsers_clubsInput>
+  }
+
+  export type clubsUpdateWithoutUsers_clubsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    posts?: postsUpdateManyWithoutClubsNestedInput
+  }
+
+  export type clubsUncheckedUpdateWithoutUsers_clubsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    posts?: postsUncheckedUpdateManyWithoutClubsNestedInput
+  }
+
+  export type usersUpsertWithoutUsers_clubsInput = {
+    update: XOR<usersUpdateWithoutUsers_clubsInput, usersUncheckedUpdateWithoutUsers_clubsInput>
+    create: XOR<usersCreateWithoutUsers_clubsInput, usersUncheckedCreateWithoutUsers_clubsInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutUsers_clubsInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutUsers_clubsInput, usersUncheckedUpdateWithoutUsers_clubsInput>
+  }
+
+  export type usersUpdateWithoutUsers_clubsInput = {
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: postsUpdateManyWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutUsers_clubsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: postsUncheckedUpdateManyWithoutUsersNestedInput
   }
 
   export type postsCreateManyUsersInput = {
@@ -3988,12 +7204,18 @@ export namespace Prisma {
     title: string
     content: string
     created_at?: Date | string | null
+    club_id?: number | null
+  }
+
+  export type users_clubsCreateManyUsersInput = {
+    club_id: number
   }
 
   export type postsUpdateWithoutUsersInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clubs?: clubsUpdateOneWithoutPostsNestedInput
   }
 
   export type postsUncheckedUpdateWithoutUsersInput = {
@@ -4001,6 +7223,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    club_id?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type postsUncheckedUpdateManyWithoutUsersInput = {
@@ -4008,6 +7231,66 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    club_id?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type users_clubsUpdateWithoutUsersInput = {
+    clubs?: clubsUpdateOneRequiredWithoutUsers_clubsNestedInput
+  }
+
+  export type users_clubsUncheckedUpdateWithoutUsersInput = {
+    club_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type users_clubsUncheckedUpdateManyWithoutUsersInput = {
+    club_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type postsCreateManyClubsInput = {
+    id?: number
+    title: string
+    content: string
+    created_at?: Date | string | null
+    author_id: number
+  }
+
+  export type users_clubsCreateManyClubsInput = {
+    user_id: number
+  }
+
+  export type postsUpdateWithoutClubsInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    users?: usersUpdateOneRequiredWithoutPostsNestedInput
+  }
+
+  export type postsUncheckedUpdateWithoutClubsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    author_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type postsUncheckedUpdateManyWithoutClubsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    author_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type users_clubsUpdateWithoutClubsInput = {
+    users?: usersUpdateOneRequiredWithoutUsers_clubsNestedInput
+  }
+
+  export type users_clubsUncheckedUpdateWithoutClubsInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type users_clubsUncheckedUpdateManyWithoutClubsInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
   }
 
 

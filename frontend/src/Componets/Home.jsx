@@ -6,7 +6,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/posts", {
+        const response = await fetch("http://localhost:3000/clubs/posts", {
           method: "GET",
           credentials: "include",
         });
@@ -38,7 +38,7 @@ function Home() {
     }
   };
   return (
-    <div className="flex flex-col justify-center items-center h-2000">
+    <div className="flex flex-col justify-center items-center h-2">
       <div>Hello world</div>
       <div className="posthead header">
         {" "}

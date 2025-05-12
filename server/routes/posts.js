@@ -1,13 +1,32 @@
 const express = require("express");
 const router = express.Router();
-
-const posts = [
-  { id: 0, username: "john", title: "post 1" },
-  { id: 1, username: "jim", title: "post 2" },
-];
-
-router.get("/", (req, res) => {
-  res.json(posts);
+const getstuff = require("../db/queries.js");
+router.get("/", async (req, res) => {
+  try {
+    const user_Id = req.query.user_Id;
+    const clubs = await getstuff.getClubs();
+    const joined = await getstuff.getJoined(user_Id);
+    res.json({ clubs, joined });
+  } catch (error) {
+    res.status(500).json({ e: "ERROR In fetching clubs" });
+  }
 });
-
+router.get("/posts", async (req, res) => {
+  try {
+    const posts = await getstuff.getPosts();
+    res.json(posts);
+  } catch (e) {
+    res.status(500).json({ e: "error in fetching posts" });
+  }
+});
+router.post("/join", async (req, res) => {
+  try {
+    const { user_id, clubId } = req.body;
+    await getstuff.jointables(user_id, clubId);
+    res.status(200).send("Successfully joined the user");
+  } catch (error) {
+    console.error("Error in /join route:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
 module.exports = router;

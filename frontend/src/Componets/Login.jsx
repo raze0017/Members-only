@@ -24,7 +24,7 @@ function Login() {
     const result = await response.json();
     if (response.ok) {
       console.log("SUCCESS:", result);
-      localStorage.setItem("token", result.user.username);
+      localStorage.setItem("token", result.user.id);
       navigate("/Home");
     } else {
       alert("LOgin failed:" + result.message);
