@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Home from "./Home";
+import Posts from "./Posts";
+import Clubs from "./Clubs";
 import Signup from "./Signup";
 function Login() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function Login() {
     if (response.ok) {
       console.log("SUCCESS:", result);
       localStorage.setItem("token", result.user.id);
-      navigate("/Home");
+      navigate("/Clubs");
     } else {
       alert("LOgin failed:" + result.message);
     }

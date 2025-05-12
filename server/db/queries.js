@@ -1,10 +1,11 @@
 // db/queries.js
 const pool = require("./Pool");
 
-const getPosts = async () => {
+const getPosts = async (club_id) => {
   try {
     const result = await pool.query(
-      "SELECT p.title, p.content, p.created_at, u.username FROM posts p JOIN users u ON p.author_id = u.id"
+      "SELECT p.title, p.content, p.created_at, (select username from users where id=p.author_id) as username FROM posts p where club_id=$1",
+      [club_id]
     );
     return result.rows;
   } catch (error) {

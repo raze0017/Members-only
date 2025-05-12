@@ -11,8 +11,9 @@ router.get("/", async (req, res) => {
     res.status(500).json({ e: "ERROR In fetching clubs" });
   }
 });
-router.get("/posts", async (req, res) => {
+router.get("/posts/:id", async (req, res) => {
   try {
+    const club_id = req.params.id;
     const posts = await getstuff.getPosts();
     res.json(posts);
   } catch (e) {

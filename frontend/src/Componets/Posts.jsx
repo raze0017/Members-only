@@ -1,30 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-function Home() {
+import { useNavigate, useParams } from "react-router-dom";
+function Posts() {
+  const { club_id } = useParams();
+
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/clubs/posts", {
-          method: "GET",
-          credentials: "include",
-        });
-        {
-          const result = await response.json();
-          if (!result || result.length === 0) {
-            setPosts([]);
-          } else {
-            setPosts(result);
-            console.log(result);
+        const response = await fetch(
+          `http://localhost:3000/clubs/posts/${club_id}`,
+          {
+            method: "GET",
+            credentials: "include",
           }
+        );
+        const result = await response.json();
+        if (!result || result.length === 0) {
+          setPosts([]);
+        } else {
+          setPosts(result);
+          console.log(result);
         }
       } catch (e) {
         console.log("ERROR IN FETCHING: ", e);
       }
     };
+
     fetchData();
-  }, []);
+  }, [club_id]);
   const handleLogout = async () => {
     try {
       await fetch("http://localhost:3000/log-out", {
@@ -58,4 +62,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Posts;

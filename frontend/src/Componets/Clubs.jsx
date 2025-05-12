@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Posts from "./Posts";
 function Clubs() {
   const navigate = useNavigate();
   const [clubs, setClubs] = useState([]);
@@ -29,8 +30,6 @@ function Clubs() {
         } else {
           {
             const joinedIds = joined.map((j) => j.club_id);
-            setJoinedClubs(joinedIds);
-
             setJoinedClubs(joinedIds);
           }
         }
@@ -83,6 +82,9 @@ function Clubs() {
       console.log("ERROR IN Log out: ", e);
     }
   };
+  const groupDetails = async (club_id) => {
+    navigate(`/Clubs/${club_id}/posts`);
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       {clubs.length === 0 ? (
@@ -101,7 +103,7 @@ function Clubs() {
                 {joinedClubs.includes(club.id) ? (
                   <button
                     className="btn btn-primary"
-                    //onClick={() => joinGroup(club.id)}
+                    onClick={() => groupDetails(club.id)}
                   >
                     Show Posts!!
                   </button>

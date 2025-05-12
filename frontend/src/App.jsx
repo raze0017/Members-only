@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import Home from "./Componets/Home";
+import Posts from "./Componets/Posts";
 import Signup from "./Componets/Signup";
 import Login from "./Componets/Login";
 import Clubs from "./Componets/Clubs";
@@ -10,7 +10,7 @@ const AppRoutes = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/Clubs");
+      navigate("/clubs");
     }
   }, [isAuthenticated, navigate]);
 
@@ -18,9 +18,9 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/Clubs" element={<Clubs />} />
-      <Route path="/Home" element={<Home />} />
+      <Route path="/clubs" element={<Clubs />} />
       <Route path="/" element={<Signup />} /> {/* or login/signup */}
+      <Route path="/clubs/:club_id/posts" element={<Posts />} />
     </Routes>
   );
 };
