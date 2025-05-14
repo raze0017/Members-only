@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 router.get("/posts/:id", async (req, res) => {
   try {
     const club_id = req.params.id;
-    const posts = await getstuff.getPosts();
+    const posts = await getstuff.getPosts(club_id);
     res.json(posts);
   } catch (e) {
     res.status(500).json({ e: "error in fetching posts" });

@@ -26,7 +26,7 @@ function Login() {
     if (response.ok) {
       console.log("SUCCESS:", result);
       localStorage.setItem("token", result.user.id);
-      navigate("/Clubs");
+      navigate("/clubs");
     } else {
       alert("LOgin failed:" + result.message);
     }

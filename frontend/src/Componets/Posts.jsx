@@ -8,6 +8,7 @@ function Posts() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log("The club Id we fetching,", club_id);
         const response = await fetch(
           `http://localhost:3000/clubs/posts/${club_id}`,
           {
@@ -42,22 +43,29 @@ function Posts() {
     }
   };
   return (
-    <div className="flex flex-col justify-center items-center h-2">
-      <div>Hello world</div>
-      <div className="posthead header">
-        {" "}
-        USER POSTS
+    <div className="w-full px-4">
+      <div className="flex flex-col w-full">
+        <div className="posthead header w-full mb-4 text-xl font-bold">
+          USER POSTS
+        </div>
         {posts.length === 0 ? (
-          <div>
-            <div className="noPosts">No posts in the database</div>
-          </div>
+          <div className="noPosts text-center">No posts in the database</div>
         ) : (
-          posts.map((post) => <div key={post.id}>{post.title}</div>)
+          posts.map((post) => (
+            <div
+              className="card bg-base-100 max-w-auto shadow-xl mb-4"
+              key={post.id}
+            >
+              <div className="card-body w-full">
+                <div className="card-title">{post.title}</div>
+                <div className="postContent">{post.content}</div>
+                <div className="createdBy">Author: {post.username}</div>
+                <div className="createdAt">{post.created_at.slice(0, 10)}</div>
+              </div>
+            </div>
+          ))
         )}
       </div>
-      <button className="btn-accent" onClick={handleLogout}>
-        Logout
-      </button>
     </div>
   );
 }

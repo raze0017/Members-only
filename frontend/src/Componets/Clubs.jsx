@@ -83,7 +83,7 @@ function Clubs() {
     }
   };
   const groupDetails = async (club_id) => {
-    navigate(`/Clubs/${club_id}/posts`);
+    navigate(`/clubs/${club_id}/posts`);
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -120,9 +120,6 @@ function Clubs() {
           ))}
         </ul>
       )}
-      <button className="btn-accent" onClick={handleLogout}>
-        Logout
-      </button>
     </div>
   );
 }
