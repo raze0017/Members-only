@@ -1,0 +1,10 @@
+POST http://localhost:3000/clubs/posts HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Testin api",
+  "content": "Hye it works",
+  "created_at": "2025-05-01T08:45:53.896Z",
+  "author_id": 13,
+  "club_id": 1
+}

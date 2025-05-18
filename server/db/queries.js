@@ -16,13 +16,25 @@ const getPosts = async (club_id) => {
     throw new Error("Failed to fetch posts from the database");
   }
 };
+const postPosts = async (title, content, created_at, author_id, club_id) => {
+  try {
+    const result = pool.query(
+      "insert into posts(title,content,created_at,author_id,club_id) values ($1,$2,$3,$4,$5) returning *",
+      [title, content, created_at, author_id, club_id]
+    );
+    return result.rows;
+  } catch (error) {
+    console.error("error in posting in the database, query error", error);
+    throw new Error("failed to post in database:", error);
+  }
+};
 const getClubs = async () => {
   try {
     const result = await pool.query("select name,id from clubs;");
     return result.rows;
   } catch (error) {
     console.error("ERROR querying clubs: ", error);
-    throw new Error("Failed to fetch clubs from database");
+    throw new Error("Failed to fetch clubs from database:", error);
   }
 };
 const getJoined = async (user_Id) => {
@@ -49,4 +61,4 @@ const jointables = async (user_id, clubId) => {
   }
 };
 
-module.exports = { getPosts, getClubs, jointables, getJoined };
+module.exports = { getPosts, getClubs, jointables, getJoined, postPosts };

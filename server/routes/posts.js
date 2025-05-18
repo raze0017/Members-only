@@ -11,6 +11,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({ e: "ERROR In fetching clubs" });
   }
 });
+
 router.get("/posts/:id", async (req, res) => {
   try {
     const club_id = req.params.id;
@@ -28,6 +29,22 @@ router.post("/join", async (req, res) => {
   } catch (error) {
     console.error("Error in /join route:", error);
     res.status(500).send("Internal Server Error");
+  }
+});
+router.post("/posts", async (req, res) => {
+  try {
+    const { title, content, created_at, author_id, club_id } = req.body;
+    const posts = await getstuff.postPosts(
+      title,
+      content,
+      created_at,
+      author_id,
+      club_id
+    );
+    res.status(200).json(posts);
+  } catch (error) {
+    console.error("error in posting");
+    res.status(500).send("Internal server error");
   }
 });
 module.exports = router;
