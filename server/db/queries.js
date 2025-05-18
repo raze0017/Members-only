@@ -18,10 +18,18 @@ const getPosts = async (club_id) => {
 };
 const postPosts = async (title, content, created_at, author_id, club_id) => {
   try {
-    const result = pool.query(
-      "insert into posts(title,content,created_at,author_id,club_id) values ($1,$2,$3,$4,$5) returning *",
+    const result = await pool.query(
+      `WITH inserted AS (
+         INSERT INTO posts(title, content, created_at, author_id, club_id)
+         VALUES ($1, $2, $3, $4, $5)
+         RETURNING *
+       )
+       SELECT inserted.*, u.username
+       FROM inserted
+       JOIN users u ON inserted.author_id = u.id`,
       [title, content, created_at, author_id, club_id]
     );
+
     return result.rows;
   } catch (error) {
     console.error("error in posting in the database, query error", error);

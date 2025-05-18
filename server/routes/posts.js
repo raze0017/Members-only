@@ -41,7 +41,9 @@ router.post("/posts", async (req, res) => {
       author_id,
       club_id
     );
-    res.status(200).json(posts);
+    console.log("Created post:", posts);
+
+    res.status(200).json(posts[0]);
   } catch (error) {
     console.error("error in posting");
     res.status(500).send("Internal server error");

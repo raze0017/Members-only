@@ -43,9 +43,10 @@ function Posts() {
       body: JSON.stringify(sendData),
       credentials: "include",
     });
-    if (response) {
+    if (response.ok) {
       const newPost = await response.json(); // backend returns the new post
-      setPosts((prevPosts) => [newPost, ...prevPosts]);
+      console.log(newPost);
+      setPosts((prevPosts) => [...prevPosts, newPost]);
     } else {
       console.log("server error");
     }
@@ -117,7 +118,11 @@ function Posts() {
                 <div className="card-title">{post.title}</div>
                 <div className="postContent">{post.content}</div>
                 <div className="createdBy">Author: {post.username}</div>
-                <div className="createdAt">{post.created_at.slice(0, 10)}</div>
+                <div className="createdAt">
+                  {post.created_at
+                    ? post.created_at.slice(0, 10)
+                    : "Unknown date"}
+                </div>
               </div>
             </div>
           ))
