@@ -3,7 +3,7 @@ function NavBar({ handleLogout }) {
     <div>
       <div className="navbar bg-base-100">
         <div className="flex-1">
-          <a className="btn btn-ghost text-4xl">Blog AwAY</a>
+          <a className="btn btn-primary text-4xl">Blog AwAY</a>
         </div>
         <div className="flex-none gap-2">
           <div className="dropdown dropdown-end">

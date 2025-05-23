@@ -6,7 +6,7 @@ const getPosts = async (club_id) => {
     console.log("Fetching posts for club_id:", club_id);
 
     const result = await pool.query(
-      "SELECT p.title, p.content, p.created_at, (select username from users where id=p.author_id) as username FROM posts p where club_id=$1",
+      "SELECT p.id,p.title, p.content, p.created_at, (select username from users where id=p.author_id) as username,p.author_id FROM posts p where club_id=$1",
       [club_id]
     );
     console.log(result.rows);

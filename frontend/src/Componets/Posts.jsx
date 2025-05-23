@@ -8,6 +8,8 @@ function Posts() {
   });
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
+  const author = localStorage.getItem("token");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,7 +26,6 @@ function Posts() {
           setPosts([]);
         } else {
           setPosts(result);
-          console.log(result);
         }
       } catch (e) {
         console.log("ERROR IN FETCHING: ", e);
@@ -45,18 +46,27 @@ function Posts() {
     });
     if (response.ok) {
       const newPost = await response.json(); // backend returns the new post
+      setFormData({
+        title: "",
+        content: "",
+      });
       console.log(newPost);
       setPosts((prevPosts) => [...prevPosts, newPost]);
     } else {
       console.log("server error");
     }
   };
+  const [editingPostId, setEditingPostId] = useState(0);
+  const [editedPostData, setEditedPostData] = useState({
+    title: "",
+    content: "",
+  });
   return (
     <div className="w-full px-4">
       <div className="flex flex-col w-full">
         {/* Open the modal using document.getElementById('ID').showModal() method */}
         <button
-          className="btn"
+          className="btn btn-accent"
           onClick={() => document.getElementById("my_modal_1").showModal()}
         >
           Create a new Post
@@ -89,43 +99,111 @@ function Posts() {
                   value={formData.content}
                   className="textarea min-w-[250px] min-h-[250px] resize-y"
                   placeholder="Write your blog here"
+                  rows={10}
                   onChange={(e) => {
                     setFormData({ ...formData, content: e.target.value });
                   }}
                 />
               </label>
 
-              <input type="submit" className="btn-secondary flex flex-col" />
+              <input type="submit" className="btn btn-primary flex flex-col" />
             </form>
+
             <div className="modal-action">
               {" "}
-              <button className="btn">close</button>
+              <button
+                className="btn"
+                onClick={() => document.getElementById("my_modal_1").close()}
+              >
+                Close
+              </button>{" "}
             </div>
           </div>
         </dialog>
-        <div className="posthead header w-full mb-4 text-xl font-bold">
+        <div className="posthead header w-full mb-4 text-xl font-bold ">
           USER POSTS
         </div>
+        4
         {posts.length === 0 ? (
           <div className="noPosts text-center">No posts in the database</div>
         ) : (
-          posts.map((post) => (
-            <div
-              className="card bg-base-100 max-w-auto shadow-xl mb-4"
-              key={post.id}
-            >
-              <div className="card-body w-full">
-                <div className="card-title">{post.title}</div>
-                <div className="postContent">{post.content}</div>
-                <div className="createdBy">Author: {post.username}</div>
-                <div className="createdAt">
-                  {post.created_at
-                    ? post.created_at.slice(0, 10)
-                    : "Unknown date"}
+          posts.map((post) =>
+            editingPostId == post.id ? (
+              <form
+                className="card bg-base-200 max-w-auto shadow-xl mb-4"
+                onSubmit={handleSubmit}
+              >
+                <div className="card-body w-full">
+                  <label className="label username flex flex-col ">
+                    Title
+                    <input
+                      type="text"
+                      name="title"
+                      value={post.title}
+                      className="input max-w-auto min-w-[1000px]"
+                      onChange={(e) =>
+                        setFormData({ ...formData, title: e.target.value })
+                      }
+                    />
+                  </label>
+                  <label className="flex flex-col label">
+                    Content
+                    <textarea
+                      type="text"
+                      name="content"
+                      value={post.content}
+                      className="textarea min-w-[1000px] min-h-[150px] resize-y"
+                      placeholder="Write your blog here"
+                      onChange={(e) => {
+                        setFormData({ ...formData, content: e.target.value });
+                      }}
+                    />
+                  </label>
+
+                  <div className="flex flex-row items-center justify-center gap-10">
+                    <div className="btn btn-accent">Cancel</div>{" "}
+                    <input
+                      type="submit"
+                      className="btn btn-primary flex flex-col"
+                    />
+                  </div>
                 </div>
+              </form>
+            ) : (
+              <div
+                className="card bg-base-200 max-w-auto shadow-xl mb-4"
+                key={post.id}
+              >
+                <div className="card-body w-full">
+                  <div className="card-title">{post.title}</div>
+                  <div className="postContent">{post.content}</div>
+                  <div className="createdBy">Author: {post.username}</div>
+                  <div className="createdAt">
+                    {post.created_at
+                      ? post.created_at.slice(0, 10)
+                      : "Unknown date"}
+                  </div>
+                </div>
+                {post.author_id == author ? (
+                  <div className="flex flex-row justify-end gap-5 ">
+                    {" "}
+                    <button
+                      onClick={() => {
+                        setEditingPostId(post.id);
+                        console.log("Editing post id is:", editingPostId);
+                      }}
+                      className="edit  btn btn-secondary"
+                    >
+                      Edit
+                    </button>
+                    <button className="delete btn btn-error">delete</button>
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
-            </div>
-          ))
+            )
+          )
         )}
       </div>
     </div>
