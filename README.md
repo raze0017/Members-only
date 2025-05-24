@@ -40,11 +40,9 @@ Before you begin, ensure you have the following installed:
 First, fork the repository on GitHub. Then, clone your forked repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Members-only.git
+git clone https://github.com/raze0017/Members-only.git
 cd Members-only
 ```
-
-(Replace `YOUR_USERNAME` with your actual GitHub username.)
 
 ### 2. Install Dependencies
 

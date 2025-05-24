@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom";
+
 function NavBar({ handleLogout }) {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="navbar bg-base-100">
         <div className="flex-1">
-          <a className="btn btn-primary text-4xl">Blog AwAY</a>
+          <a
+            className="btn btn-primary text-4xl"
+            onClick={() => navigate("/clubs")}
+          >
+            Blog AwAY
+          </a>
         </div>
         <div className="flex-none gap-2">
           <div className="dropdown dropdown-end">
