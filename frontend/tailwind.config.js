@@ -8,6 +8,11 @@ export default {
   },
   plugins: [daisyui],
   daisyui: {
-    themes: ["coffee"],
+    themes: ["dracula"],
   },
 };
+//dracula
+//business
+//cyberpunk
+//black
+//aqua

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 function NavBar({ handleLogout }) {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="text-white">
       <div className="navbar bg-base-100">
         <div className="flex-1">
           <a

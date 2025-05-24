@@ -88,6 +88,18 @@ const deletePost = async (userId) => {
     throw new Error("Failed to delete the data");
   }
 };
+const postClubs = async (clubName) => {
+  try {
+    const id = await pool.query(
+      "INSERT INTO clubs (name) values($1) returning id",
+      [clubName]
+    );
+    return id.rows[0];
+  } catch (error) {
+    console.error("error in inserting data", error);
+    throw new Error("Database Error, Couldn't Insert");
+  }
+};
 module.exports = {
   getPosts,
   getClubs,
@@ -96,4 +108,5 @@ module.exports = {
   postPosts,
   putPosts,
   deletePost,
+  postClubs,
 };

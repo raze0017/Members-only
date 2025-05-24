@@ -24,6 +24,7 @@ function Clubs() {
           setClubs([]);
         } else {
           setClubs(clubs);
+          console.log(clubs);
         }
         if (!joined || joined.length === 0) {
           setJoinedClubs([]);
@@ -70,47 +71,78 @@ function Clubs() {
   const groupDetails = async (club_id) => {
     navigate(`/clubs/${club_id}/posts`);
   };
+  const [clubForm, setClubForm] = useState({
+    clubName: "",
+    password: "",
+  });
+  const handleSubmit = async (clubName) => {
+    const response = await fetch(`http://localhost:3000/clubs/${clubName}`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      credentials: "include",
+    });
+    if (response.ok) {
+      const result = await response.json();
+      console.log("Successfully added the club, id:", result);
+      setClubs([...clubs, { name: clubName, id: result.id }]);
+    } else {
+      console.log("Error in server");
+    }
+  };
   return (
     <>
       <div className="newClub flex justify-center items-center">
         {/* Open the modal using document.getElementById('ID').showModal() method */}
         <button
-          className="btn"
+          className="btn btn-error"
           onClick={() => document.getElementById("my_modal_1").showModal()}
         >
           Create new club!
         </button>
         <dialog id="my_modal_1" className="modal">
-          <div className="modal-box">
+          <div className="modal-box ">
             <h3 className="font-bold text-lg"></h3>
 
-            <div className="modal-action">
+            <div className="modal-action flex flex-col justify-center items-center">
               <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button className="btn">Close</button>
+                <label className="label flex flex-col gap-2">
+                  Club Name:
+                  <input
+                    type="text"
+                    className="input"
+                    value={clubForm.clubName}
+                    onChange={(e) => {
+                      setClubForm({ ...clubForm, clubName: e.target.value });
+                    }}
+                  />
+                </label>
+
+                <button
+                  className="btn btn-primary relative left-56"
+                  onClick={() => {
+                    handleSubmit(clubForm.clubName);
+                    setClubForm({ ...clubForm, clubName: "" });
+                  }}
+                >
+                  submit
+                </button>
               </form>
             </div>
           </div>
         </dialog>
       </div>
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-center justify-center min-h-screen min-w-max ">
         {clubs.length === 0 ? (
           <p>No clubs found.</p>
         ) : (
-          <ul className="card bg-base-300 w-96 shadow-xl p-4 space-y-4">
+          <ul className="card bg-base-300 w-full lg:max-w-[750px] shadow-xl p-4 space-y-4">
             {clubs.map((club, index) => (
               <li
-                className="p-4 bg-base-100 rounded-lg shadow flex flex-col gap-2"
+                className="p-4 bg-base-100 rounded-lg shadow flex flex-col gap-2 min-h-[150px]"
                 key={index}
               >
                 <div className="text-lg font-medium">{club.name}</div>
                 <div className="card-actions justify-end">
-                  {console.log(
-                    "joinedClubs",
-                    joinedClubs,
-                    typeof joinedClubs[0]
-                  )}
-                  {console.log("club.id", club.id, typeof club.id)}
                   {joinedClubs.includes(club.id) ? (
                     <button
                       className="btn btn-primary"

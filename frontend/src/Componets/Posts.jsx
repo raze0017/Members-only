@@ -103,15 +103,18 @@ function Posts() {
     }
   };
   return (
-    <div className="w-full px-4">
-      <div className="flex flex-col w-full">
+    <div className="px-4">
+      <div className="flex flex-col">
         {/* Open the modal using document.getElementById('ID').showModal() method */}
-        <button
-          className="btn btn-accent"
-          onClick={() => document.getElementById("my_modal_1").showModal()}
-        >
-          Create a new Post
-        </button>
+        <div className="flex justify-center items-center">
+          <button
+            className="btn btn-secondary w-56 flex justify-center items-center"
+            onClick={() => document.getElementById("my_modal_1").showModal()}
+          >
+            Create new Post
+          </button>
+        </div>
+
         <dialog id="my_modal_1" className="modal">
           <div className="modal-box">
             <h3 className="font-bold text-lg">Create Post</h3>
@@ -254,7 +257,7 @@ function Posts() {
                         });
                         console.log("Editing post id is:", editingPostId);
                       }}
-                      className="edit  btn btn-secondary"
+                      className="edit  btn btn-accent"
                     >
                       Edit
                     </button>

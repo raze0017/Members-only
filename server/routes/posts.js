@@ -72,4 +72,14 @@ router.delete("/posts/:id", async (req, res) => {
     res.status(500).send("internal server error");
   }
 });
+router.post("/:clubName", async (req, res) => {
+  try {
+    const clubName = req.params.clubName;
+    const response = await getstuff.postClubs(clubName);
+    res.status(200).json(response);
+  } catch (error) {
+    console.log("Error in inserting data:", error);
+    res.status(500).send("internal server error");
+  }
+});
 module.exports = router;
