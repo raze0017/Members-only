@@ -80,7 +80,14 @@ const putPosts = async (postId, title, content) => {
     throw new Error("Failed to edit the column");
   }
 };
-
+const deletePost = async (userId) => {
+  try {
+    await pool.query("DELETE from posts where id=$1", [userId]);
+  } catch (error) {
+    console.error("Error in database query,", error);
+    throw new Error("Failed to delete the data");
+  }
+};
 module.exports = {
   getPosts,
   getClubs,
@@ -88,4 +95,5 @@ module.exports = {
   getJoined,
   postPosts,
   putPosts,
+  deletePost,
 };

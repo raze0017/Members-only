@@ -86,6 +86,22 @@ function Posts() {
       console.log("Error occured in editing");
     }
   };
+  const handleDelete = async (post_Id) => {
+    const postId = post_Id;
+    const response = await fetch(
+      `http://localhost:3000/clubs/posts/${postId}`,
+      {
+        method: "DELETE",
+        credentials: "include",
+      }
+    );
+    if (response.ok) {
+      console.log("Deleting successfull");
+      setPosts((prevPosts) => prevPosts.filter((post) => post.id != postId));
+    } else {
+      console.log("Error in deleting");
+    }
+  };
   return (
     <div className="w-full px-4">
       <div className="flex flex-col w-full">
@@ -155,7 +171,7 @@ function Posts() {
           posts.map((post) =>
             editingPostId == post.id ? (
               <form
-                className="card bg-base-200 max-w-auto shadow-xl mb-4"
+                className="card bg-base-200 w-full max-w-4xl shadow-xl mb-4 mx-auto"
                 onSubmit={(e) => {
                   e.preventDefault();
                   handleEdit(
@@ -166,13 +182,13 @@ function Posts() {
                 }}
               >
                 <div className="card-body w-full">
-                  <label className="label username flex flex-col ">
+                  <label className="label username flex flex-col">
                     Title
                     <input
                       type="text"
                       name="title"
                       value={editedPostData.title}
-                      className="input max-w-auto min-w-[1000px]"
+                      className="input w-full" // 🔄 removed min-w-[1000px]
                       onChange={(e) =>
                         setEditedPostData({
                           ...editedPostData,
@@ -187,7 +203,7 @@ function Posts() {
                       type="text"
                       name="content"
                       value={editedPostData.content}
-                      className="textarea min-w-[1000px] min-h-[150px] resize-y"
+                      className="textarea w-full min-h-[150px] resize-y" // 🔄 removed min-w
                       placeholder="Write your blog here"
                       onChange={(e) => {
                         setEditedPostData({
@@ -198,19 +214,15 @@ function Posts() {
                     />
                   </label>
 
-                  <div className="flex flex-row items-center justify-center gap-10">
-                    <div
+                  <div className="flex flex-row flex-wrap items-center justify-center gap-4">
+                    <button
+                      type="button"
                       className="btn btn-accent"
-                      onClick={() => {
-                        setEditingPostId(-1);
-                      }}
+                      onClick={() => setEditingPostId(-1)}
                     >
                       Cancel
-                    </div>{" "}
-                    <input
-                      type="submit"
-                      className="btn btn-primary flex flex-col"
-                    />
+                    </button>
+                    <input type="submit" className="btn btn-primary" />
                   </div>
                 </div>
               </form>
@@ -246,7 +258,15 @@ function Posts() {
                     >
                       Edit
                     </button>
-                    <button className="delete btn btn-error">delete</button>
+                    <button
+                      className="delete btn btn-error"
+                      onClick={() => {
+                        console.log("deleting post id is", post.id);
+                        handleDelete(post.id);
+                      }}
+                    >
+                      delete
+                    </button>
                   </div>
                 ) : (
                   <></>

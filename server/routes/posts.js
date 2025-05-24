@@ -61,4 +61,15 @@ router.put("/posts", async (req, res) => {
     res.status(500).send("internal server error");
   }
 });
+router.delete("/posts/:id", async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const response = await getstuff.deletePost(postId);
+    console.log("Successfully deleted post");
+    res.status(200).send("success");
+  } catch (error) {
+    console.error("error in deleting,", error);
+    res.status(500).send("internal server error");
+  }
+});
 module.exports = router;
