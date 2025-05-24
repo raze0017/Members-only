@@ -51,16 +51,41 @@ function Posts() {
         content: "",
       });
       console.log(newPost);
-      setPosts((prevPosts) => [...prevPosts, newPost]);
+      setPosts((prevPosts) => [newPost, ...prevPosts]);
     } else {
       console.log("server error");
     }
   };
-  const [editingPostId, setEditingPostId] = useState(0);
+  const [editingPostId, setEditingPostId] = useState(-1);
   const [editedPostData, setEditedPostData] = useState({
     title: "",
     content: "",
   });
+  const handleEdit = async (postId, title, content) => {
+    const sendData = {
+      postId,
+      title,
+      content,
+    };
+    console.log(sendData);
+    const response = await fetch("http://localhost:3000/clubs/posts", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(sendData),
+      credentials: "include",
+    });
+    if (response.ok) {
+      console.log("edited post data");
+      setEditingPostId(-1);
+      setPosts((prevPosts) =>
+        prevPosts.map((post) =>
+          post.id == postId ? { ...post, title: title, content: content } : post
+        )
+      );
+    } else {
+      console.log("Error occured in editing");
+    }
+  };
   return (
     <div className="w-full px-4">
       <div className="flex flex-col w-full">
@@ -123,7 +148,7 @@ function Posts() {
         <div className="posthead header w-full mb-4 text-xl font-bold ">
           USER POSTS
         </div>
-        4
+
         {posts.length === 0 ? (
           <div className="noPosts text-center">No posts in the database</div>
         ) : (
@@ -131,7 +156,14 @@ function Posts() {
             editingPostId == post.id ? (
               <form
                 className="card bg-base-200 max-w-auto shadow-xl mb-4"
-                onSubmit={handleSubmit}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleEdit(
+                    post.id,
+                    editedPostData.title,
+                    editedPostData.content
+                  );
+                }}
               >
                 <div className="card-body w-full">
                   <label className="label username flex flex-col ">
@@ -139,10 +171,13 @@ function Posts() {
                     <input
                       type="text"
                       name="title"
-                      value={post.title}
+                      value={editedPostData.title}
                       className="input max-w-auto min-w-[1000px]"
                       onChange={(e) =>
-                        setFormData({ ...formData, title: e.target.value })
+                        setEditedPostData({
+                          ...editedPostData,
+                          title: e.target.value,
+                        })
                       }
                     />
                   </label>
@@ -151,17 +186,27 @@ function Posts() {
                     <textarea
                       type="text"
                       name="content"
-                      value={post.content}
+                      value={editedPostData.content}
                       className="textarea min-w-[1000px] min-h-[150px] resize-y"
                       placeholder="Write your blog here"
                       onChange={(e) => {
-                        setFormData({ ...formData, content: e.target.value });
+                        setEditedPostData({
+                          ...editedPostData,
+                          content: e.target.value,
+                        });
                       }}
                     />
                   </label>
 
                   <div className="flex flex-row items-center justify-center gap-10">
-                    <div className="btn btn-accent">Cancel</div>{" "}
+                    <div
+                      className="btn btn-accent"
+                      onClick={() => {
+                        setEditingPostId(-1);
+                      }}
+                    >
+                      Cancel
+                    </div>{" "}
                     <input
                       type="submit"
                       className="btn btn-primary flex flex-col"
@@ -190,6 +235,11 @@ function Posts() {
                     <button
                       onClick={() => {
                         setEditingPostId(post.id);
+                        setEditedPostData({
+                          ...editedPostData,
+                          title: post.title,
+                          content: post.content,
+                        });
                         console.log("Editing post id is:", editingPostId);
                       }}
                       className="edit  btn btn-secondary"

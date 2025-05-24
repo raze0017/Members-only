@@ -6,7 +6,7 @@ const getPosts = async (club_id) => {
     console.log("Fetching posts for club_id:", club_id);
 
     const result = await pool.query(
-      "SELECT p.id,p.title, p.content, p.created_at, (select username from users where id=p.author_id) as username,p.author_id FROM posts p where club_id=$1",
+      "SELECT p.id,p.title, p.content, p.created_at, (select username from users where id=p.author_id) as username,p.author_id FROM posts p where club_id=$1 order by p.id desc",
       [club_id]
     );
     console.log(result.rows);
@@ -68,5 +68,24 @@ const jointables = async (user_id, clubId) => {
     throw new Error("Failed to join user wit club: ");
   }
 };
+const putPosts = async (postId, title, content) => {
+  try {
+    await pool.query("UPDATE posts set title=$1, content=$2 where id=$3", [
+      title,
+      content,
+      postId,
+    ]);
+  } catch (error) {
+    console.error("error in updating the database, query error:", error);
+    throw new Error("Failed to edit the column");
+  }
+};
 
-module.exports = { getPosts, getClubs, jointables, getJoined, postPosts };
+module.exports = {
+  getPosts,
+  getClubs,
+  jointables,
+  getJoined,
+  postPosts,
+  putPosts,
+};

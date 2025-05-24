@@ -49,4 +49,16 @@ router.post("/posts", async (req, res) => {
     res.status(500).send("Internal server error");
   }
 });
+router.put("/posts", async (req, res) => {
+  try {
+    const { postId, title, content } = req.body;
+    const response = await getstuff.putPosts(postId, title, content);
+    console.log("successfully updated post");
+    res.status(200).send("success");
+  } catch (error) {
+    console.error("Error in database update:", error);
+
+    res.status(500).send("internal server error");
+  }
+});
 module.exports = router;
